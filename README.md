@@ -30,7 +30,7 @@ Rails 5.2.2
 - [ ] 投稿編集機能
 - [ ] 投稿削除機能
 
-##カタログ設計
+## カタログ設計
 https://docs.google.com/spreadsheets/d/1v24HhlVa0P1CbKKrrtFDMEily5rakp-YMSd9HYdFVjs/edit?usp=sharing
 
 ## テーブル定義
