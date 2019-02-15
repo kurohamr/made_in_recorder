@@ -7,7 +7,7 @@ Made in Recorder
 買ったものの製造地・生産地を記録します。
 
 ## コンセプト
-好きなものがどこから来たのかを地図で見れたら嬉しくありませんか？
+好きなものがどこから来たのか地図で見れたら嬉しくありませんか？
 
 ## バージョン
 Ruby 2.6.0
@@ -34,7 +34,8 @@ Rails 5.2.2
 https://docs.google.com/spreadsheets/d/1v24HhlVa0P1CbKKrrtFDMEily5rakp-YMSd9HYdFVjs/edit?usp=sharing
 
 ## テーブル定義
-https://cacoo.com/diagrams/8VgVHYFWWaAFuWd6/4D5D9
+https://cacoo.com/diagrams/8VgVHYFWWaAFuWd6/4D5D9  
+https://docs.google.com/spreadsheets/d/13D8XlkKxKejtQ6SAXisJe1FJ32A-1t0GfOktPhEp0As/edit?usp=sharing
 
 ## 画面遷移図
 https://cacoo.com/diagrams/nV8xL2joGV9Jo4xO/67747
