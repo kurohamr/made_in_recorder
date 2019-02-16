@@ -12,7 +12,7 @@
   <% end %>
 
   <%= form.fields :thing do |thing_form| %>
-    <%= thing_form.label :name %>
+    <%= thing_form.label :Thing_name %>
     <%= thing_form.text_field :name %>
 
     <%= thing_form.fields :asset do |asset_form| %>
@@ -27,7 +27,7 @@
   </div>
 
   <%= form.fields :place do |place_form| %>
-    <%= place_form.label :name %>
+    <%= place_form.label :Place_name %>
     <%= place_form.text_field :name %>
 
     <%= place_form.fields :address do |address_form| %>
