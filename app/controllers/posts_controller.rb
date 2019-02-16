@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  # before_action :set_nest_params, only: [:edit, :update]
   # before_action :login_required
 
   def index
@@ -28,7 +27,6 @@ class PostsController < ApplicationController
   def show; end
 
   def edit
-    binding.pry
   end
 
   def update
@@ -50,12 +48,6 @@ class PostsController < ApplicationController
   private
   def set_post
     @post = Post.find(params[:id])
-  end
-
-  def set_post_when_edit_action
-    @post.thing = Thing.find_by(post_id: @post.id)
-    @post.place = Place.find_by(post_id: @post.id)
-    # @post.thing.asset = Asset.find(@postaddressable_id)
   end
 
   def post_params

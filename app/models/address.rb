@@ -1,5 +1,5 @@
 class Address < ApplicationRecord
-  //TODO: Optional true is for escaping exist validation on assciation.
+  #TODO: Optional true is for escaping exist validation on assciation.
   belongs_to :addressable, polymorphic: true, optional: true
 
   # validates :country, length: { maximum: 50 }
