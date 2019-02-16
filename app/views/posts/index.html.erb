@@ -1,7 +1,12 @@
 <h2>投稿一覧</h2>
   <ul>
     <% @posts.each do |post| %>
-      <li><%= post.id %></li>
-      <li><%= post.description %></li>
+      <li>post id: <%= post.id %></li>
+      <li>description: <%= post.description %></li>
+      <li>thing: <%= post.thing.name %></li>
+      <li>place: <%= post.place.name %></li>
+      <li><%= link_to 'Show', post %></li>
+      <li><%= link_to 'Edit', edit_post_path(post) %></li>
+      <li><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></li>
     <% end %>
   </ul>
