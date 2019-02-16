@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2019_02_15_131013) do
   create_table "addresses", force: :cascade do |t|
     t.string "country"
     t.string "state"
+    t.string "city"
     t.string "address1"
     t.string "address2"
     t.string "address3"

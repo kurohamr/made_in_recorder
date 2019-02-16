@@ -8,10 +8,15 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-
   end
 
   def create
+    @post = Post.new(post_params)
+    #buildはアソシエーション先のプロパティを作りつつくっつける
+    @post.build_thing(name: post_thing_params[:thing_name])
+    @post.build_place(name: post_place_params[:place_name])
+    @post.place.build_address(place_address_params)
+    @post.thing.build_asset(thing_asset_params)
     if @post.save
       redirect_to post_path(@post.id)
     else
@@ -45,11 +50,34 @@ class PostsController < ApplicationController
 
 private
   def set_post
-    @post = post.find(params[:id])
+    @post =Post.find(params[:id])
   end
 
   def post_params
-    params.require(:post).permit(:description, :user_id, :image, :image_cache)
+    # :image, :image_cahce
+    params.require(:post).permit(:description, :user_id)
+  end
+
+  def post_thing_params
+    params.require(:post).permit(:thing_name)
+  end
+
+  def post_place_params
+    params.require(:post).permit(:place_name)
+  end
+
+  def thing_asset_params
+    params.require(:post).permit(:thing_name)
+  end
+
+  def place_address_params
+    # :latitude, :longitude, :city,
+    params.require(:post).permit(:country, :state, :city, :address1, :address2, :address3, :postcode)
+  end
+
+  def thing_asset_params
+    # :latitude, :longitude
+    params.require(:post).permit(:image)
   end
 
   # def login_required

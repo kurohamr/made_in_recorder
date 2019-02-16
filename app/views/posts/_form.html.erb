@@ -13,23 +13,58 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
+    <%= form.label :thing_name %>
+    <%= form.text_field :thing_name %>
   </div>
 
-  <!-- <div class="field"> -->
-    <%# <%= form.label :content %> %>
-    <%# <%= form.text_area :content %> %>
-  <!-- </div> -->
-
-    <!-- <div class="field"> -->
-    <%# <%= form.label :deadline %> %>
-    <%# <%= form.date_select :deadline %> %>
-  <!-- </div> -->
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
 
   <div class="field">
     <%= form.label :image %>
     <%= form.file_field :image %>
+  </div>
+
+  <div class="field">
+    <%= form.label :place_name %>
+    <%= form.text_field :place_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :country %>
+    <%= form.text_field :country %>
+  </div>
+
+  <div class="field">
+    <%= form.label :state %>
+    <%= form.text_field :state %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city %>
+    <%= form.text_field :city %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address1 %>
+    <%= form.text_field :address1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address2 %>
+    <%= form.text_field :address2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address3 %>
+    <%= form.text_field :address3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :postcode %>
+    <%= form.text_field :postcode %>
   </div>
 
   <div class="actions">
