@@ -7,7 +7,8 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = post.new
+    @post = Post.new
+
   end
 
   def create
@@ -48,7 +49,7 @@ private
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :deadline, :priority, :status, :user_id, :label_ids)
+    params.require(:post).permit(:description, :user_id, :image, :image_cache)
   end
 
   # def login_required
