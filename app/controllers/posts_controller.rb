@@ -18,7 +18,6 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    binding.pry
     if @post.save
       redirect_to post_path(@post.id)
     else
