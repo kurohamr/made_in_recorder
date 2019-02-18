@@ -53,18 +53,39 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
         :address2,
         :address3,
         :postcode
-      ],
-      asset_attributes: [
-        :image
-      ],
-      address_attributes: [
-        :country,
-        :state,
-        :city,
-        :address1,
-        :address2,
-        :address3,
-        :postcode
       ])
   end
+
+  # def user_params
+  #   params.require(:user).permit(
+  #     :name,
+  #     :introduction,
+  #     :email,
+  #     :password,
+  #     :password_confirmation,
+  #     asset: [
+  #       :image
+  #     ],
+  #     address:  [
+  #       :country,
+  #       :state,
+  #       :city,
+  #       :address1,
+  #       :address2,
+  #       :address3,
+  #       :postcode
+  #     ],
+  #     asset_attributes: [
+  #       :image
+  #     ],
+  #     address_attributes: [
+  #       :country,
+  #       :state,
+  #       :city,
+  #       :address1,
+  #       :address2,
+  #       :address3,
+  #       :postcode
+  #     ])
+  # end
 end
