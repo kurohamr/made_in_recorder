@@ -3,5 +3,4 @@
 <p><%= @user.name %></p>
 <p><%= @user.introduction %></p>
 
-
-<%= link_to "User edit", edit_user_path(id: current_user.id) %>
+<%= link_to "User edit", edit_user_path(id: @user.id) %>

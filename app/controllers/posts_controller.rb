@@ -10,8 +10,8 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @post.build_thing()
     @post.build_place()
+    @post.build_thing()
     @post.place.build_address()
     @post.thing.build_asset()
   end
@@ -19,6 +19,8 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = current_user
+    @post.thing.asset.image = params[:post][:thing_attributes][:asset_attributes][:image].tempfile
+    # binding.pry
     if @post.save
       redirect_to post_path(@post.id)
     else

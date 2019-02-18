@@ -11,11 +11,14 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
   end
 
   def edit
-
   end
 
   def update
-    if @user.update(user_params)
+    @user.build_asset(user_params[:asset])
+    @user.build_asset.image = user_params[:asset][:image]
+    @user.build_address(user_params[:address])
+    @user.attributes = (user_params.permit(:name, :introduction, :email, :password, :password_confirmation))
+    if @user.save
       redirect_to user_path(@user.id), notice: 'user updated!'
     else
       render 'edit'
@@ -39,6 +42,18 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
       :email,
       :password,
       :password_confirmation,
+      asset: [
+        :image
+      ],
+      address:  [
+        :country,
+        :state,
+        :city,
+        :address1,
+        :address2,
+        :address3,
+        :postcode
+      ],
       asset_attributes: [
         :image
       ],
