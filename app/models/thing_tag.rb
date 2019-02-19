@@ -1,4 +1,4 @@
 class ThingTag < ApplicationRecord
-  # belongs_to :thing
-  # belongs_to :tag
+  belongs_to :thing
+  belongs_to :tag
 end
