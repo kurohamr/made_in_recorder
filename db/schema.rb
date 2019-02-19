@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_17_052510) do
+ActiveRecord::Schema.define(version: 2019_02_19_062922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,15 +41,6 @@ ActiveRecord::Schema.define(version: 2019_02_17_052510) do
     t.index ["assetable_type", "assetable_id"], name: "index_assets_on_assetable_type_and_assetable_id"
   end
 
-  create_table "place_tags", force: :cascade do |t|
-    t.bigint "place_id"
-    t.bigint "tag_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["place_id"], name: "index_place_tags_on_place_id"
-    t.index ["tag_id"], name: "index_place_tags_on_tag_id"
-  end
-
   create_table "places", force: :cascade do |t|
     t.string "name", null: false
     t.bigint "post_id"
@@ -66,19 +57,19 @@ ActiveRecord::Schema.define(version: 2019_02_17_052510) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "posts_tags", force: :cascade do |t|
+    t.bigint "post_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_posts_tags_on_post_id"
+    t.index ["tag_id"], name: "index_posts_tags_on_tag_id"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "thing_tags", force: :cascade do |t|
-    t.bigint "thing_id"
-    t.bigint "tag_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["tag_id"], name: "index_thing_tags_on_tag_id"
-    t.index ["thing_id"], name: "index_thing_tags_on_thing_id"
   end
 
   create_table "things", force: :cascade do |t|
@@ -108,11 +99,9 @@ ActiveRecord::Schema.define(version: 2019_02_17_052510) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "place_tags", "places"
-  add_foreign_key "place_tags", "tags"
   add_foreign_key "places", "posts"
   add_foreign_key "posts", "users"
-  add_foreign_key "thing_tags", "tags"
-  add_foreign_key "thing_tags", "things"
+  add_foreign_key "posts_tags", "posts"
+  add_foreign_key "posts_tags", "tags"
   add_foreign_key "things", "posts"
 end

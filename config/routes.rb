@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   devise_for :users #resources :usersより上に書く
   resources :users, only: [:index, :edit, :update, :destroy, :show]
-
   resources :posts
+  get '/posts/hashtag/:name', to:'posts#hashtags'
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

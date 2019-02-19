@@ -16,7 +16,7 @@
         <tr>
           <td><%= post.thing.name %></td>
           <td><%= post.place.name %></td>
-          <td><%= post.description %></td>
+          <td><%= render_with_hashtags(post.description) %></td>
           <!-- <td>imatd</td> -->
           <td><%= link_to 'Show', post %></td>
           <td><%= link_to 'Edit', edit_post_path(post) %></td>
