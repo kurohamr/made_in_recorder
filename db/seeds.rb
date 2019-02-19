@@ -1,13 +1,5 @@
 require 'faker'
 
-
-if Tag.all.count == 0
-  Tag.create!(name: "Japan")
-  Tag.create!(name: "US")
-  Tag.create!(name: "UK")
-  Tag.create!(name: "Germany")
-end
-
 if User.count == 0
   name = "test"
   email = "test@example.com"
