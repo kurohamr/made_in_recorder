@@ -9,6 +9,10 @@ class Post < ApplicationRecord
 
   validates :place, presence: true, length: { in: 1..50 }
   validates :thing, presence: true, length: { in: 1..50 }
+  validates :description, length: {maximum: 200}
+  validates :latitude, presence: true
+  validates :longitude, presence: true
+  validates :user_id, presence: true
 
   geocoded_by :place
   after_validation :geocode

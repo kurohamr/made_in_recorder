@@ -8,6 +8,15 @@ class User < ApplicationRecord
   has_one :asset, as: :assetable, dependent: :destroy
   has_many :posts, dependent: :destroy
 
+  validates :name, presence: true, length: { in: 1..20 }
+  validates :introduction, length: {maximum: 200}
+  validates :place, presence: true, length: { in: 1..50 }
+  validates :latitude, presence: true
+  validates :longitude, presence: true
+  validates :email, presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+  validates :password, presence: true, length: { in: 6..20 }
+
   geocoded_by :place
   after_validation :geocode
+
 end
