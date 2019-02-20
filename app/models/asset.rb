@@ -10,6 +10,6 @@ class Asset < ApplicationRecord
   # def post_image?
   #   assetable_type == "Post"
   # end
-  validates :assetable_id, presence: true
-  validates :assetable_type, presence: true
+  # validates :assetable_id, presence: true
+  # validates :assetable_type, presence: true
 end

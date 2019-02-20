@@ -8,6 +8,6 @@ class Address < ApplicationRecord
   validates :address2, length: { maximum: 100 }
   validates :address3, length: { maximum: 100 }
   validates :postcode, length: { maximum: 20 }
-  validates :addressable_id, presence: true
-  validates :addressable_type, presence: true
+  # validates :addressable_id, presence: true
+  # validates :addressable_type, presence: true
 end
