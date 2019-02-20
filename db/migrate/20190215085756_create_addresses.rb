@@ -8,8 +8,6 @@ class CreateAddresses < ActiveRecord::Migration[5.2]
       t.string :address2#, null: false
       t.string :address3#, null: false
       t.string :postcode#, null: false
-      t.float :latitude#, null: false
-      t.float :longitude#, null: false
       t.references :addressable, polymorphic: true, index: true
       t.timestamps
     end

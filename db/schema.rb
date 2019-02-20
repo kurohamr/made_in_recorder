@@ -23,8 +23,6 @@ ActiveRecord::Schema.define(version: 2019_02_19_062922) do
     t.string "address2"
     t.string "address3"
     t.string "postcode"
-    t.float "latitude"
-    t.float "longitude"
     t.string "addressable_type"
     t.bigint "addressable_id"
     t.datetime "created_at", null: false
@@ -41,16 +39,12 @@ ActiveRecord::Schema.define(version: 2019_02_19_062922) do
     t.index ["assetable_type", "assetable_id"], name: "index_assets_on_assetable_type_and_assetable_id"
   end
 
-  create_table "places", force: :cascade do |t|
-    t.string "name", null: false
-    t.bigint "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_places_on_post_id"
-  end
-
   create_table "posts", force: :cascade do |t|
+    t.string "thing"
     t.text "description"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "place", null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -72,17 +66,12 @@ ActiveRecord::Schema.define(version: 2019_02_19_062922) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "things", force: :cascade do |t|
-    t.string "name", null: false
-    t.bigint "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_things_on_post_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.text "introduction"
+    t.string "place"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false
@@ -99,9 +88,7 @@ ActiveRecord::Schema.define(version: 2019_02_19_062922) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "places", "posts"
   add_foreign_key "posts", "users"
   add_foreign_key "posts_tags", "posts"
   add_foreign_key "posts_tags", "tags"
-  add_foreign_key "things", "posts"
 end
