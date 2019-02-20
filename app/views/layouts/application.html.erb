@@ -15,7 +15,9 @@
   <body>
     <% if user_signed_in? %>
       <%= link_to "New post", new_post_path %>
+      <%= link_to "Posts", posts_path %>
       <%= link_to "User", user_path(id: current_user.id) %>
+      <%= link_to "Edit user", edit_user_path(id: current_user.id) %>
       <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
     <% else %>
       <%= link_to "Sign up", new_user_registration_path %>
