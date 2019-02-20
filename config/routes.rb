@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'posts#index'
 
   devise_for :users #resources :usersより上に書く
-  resources :users, only: [:index, :edit, :update, :destroy, :show]
+  resources :users, only: [:edit, :update, :destroy, :show]
   resources :posts
   get '/posts/hashtag/:name', to:'posts#hashtags'
 

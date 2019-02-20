@@ -4,8 +4,9 @@ if User.count == 0
   name = "test"
   email = "test@example.com"
   password = "password"
-  introduction = "i am test user."
-  User.create!(name: name, email: email, password: password, introduction: introduction)
+  introduction = "i am first user."
+  place = "渋谷区"
+  User.create!(name: name, email: email, place: place , password: password, introduction: introduction)
 end
 
 
@@ -14,7 +15,8 @@ end
   email = Faker::Internet.email
   password = "password"
   introduction = Faker::Food.measurement
-  User.create!(name: name, email: email, password: password, introduction: introduction)
+  place = Faker::Nation.capital_city
+  User.create!(name: name, email: email, place: place, password: password, introduction: introduction)
 end
 
 n = 0
@@ -42,26 +44,28 @@ end
 20.times do |n|
   description = Faker::Food.spice
   user_id = User.all.sample.id
-  Post.create!({ description: description, user_id: user_id})
+  place = Faker::Nation.capital_city
+  thing = Faker::Beer.name
+  Post.create!({ description: description, place: place, thing: thing, user_id: user_id})
 end
 
-n = 0
+# n = 0
+#
+# # 20.times do |n|
+# #   n += 1
+# #   name = Faker::Food.fruits
+# #   post_id = n
+# #   Thing.create!({ name: name, post_id: post_id})
+# # end
+#
+# n = 0
 
-20.times do |n|
-  n += 1
-  name = Faker::Food.fruits
-  post_id = n
-  Thing.create!({ name: name, post_id: post_id})
-end
-
-n = 0
-
-20.times do |n|
-  n += 1
-  name = Faker::Nation.nationality
-  post_id = n
-  Place.create!({name: name, post_id: post_id})
-end
+# 20.times do |n|
+#   n += 1
+#   name = Faker::Nation.nationality
+#   post_id = n
+#   Place.create!({name: name, post_id: post_id})
+# end
 
 n = 0
 

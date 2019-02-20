@@ -1,4 +1,4 @@
-<h1>posts</h1>
+<h1>Posts</h1>
 
 <table>
   <thead>
@@ -14,8 +14,8 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= post.thing.name %></td>
-        <td><%= post.place.name %></td>
+        <td><%= post.thing %></td>
+        <td><%= post.place %></td>
         <td><%= render_with_hashtags(post.description) %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>

@@ -11,26 +11,27 @@
     </div>
   <% end %>
 
-  <%= form.fields :thing do |thing_form| %>
-    <%= thing_form.label :Thing_name %>
-    <%= thing_form.text_field :name %>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :thing %>
+  </div>
 
-    <%= thing_form.fields :asset do |asset_form| %>
+    <%= form.fields :asset do |asset_form| %>
       <%= asset_form.label :image %>
       <%= asset_form.file_field :image %>
     <% end %>
-  <% end %>
 
   <div class="field">
     <%= form.label :description %>
     <%= form.text_area :description %>
   </div>
 
-  <%= form.fields :place do |place_form| %>
-    <%= place_form.label :Place_name %>
-    <%= place_form.text_field :name %>
+  <div class="field">
+    <%= form.label :place %>
+    <%= form.text_field :place %>
+  </div>
 
-    <%= place_form.fields :address do |address_form| %>
+    <%= form.fields :address do |address_form| %>
 
       <div class="field">
         <%= address_form.label :country %>
@@ -67,8 +68,6 @@
         <%= address_form.text_field :postcode %>
       </div>
     <% end %>
-
-  <% end %>
 
   <div class="actions">
     <%= form.submit %>

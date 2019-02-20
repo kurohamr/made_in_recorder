@@ -14,10 +14,11 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
   end
 
   def update
+    binding.pry
     @user.build_asset(user_params[:asset])
     @user.build_asset.image = user_params[:asset][:image]
     @user.build_address(user_params[:address])
-    @user.attributes = (user_params.permit(:name, :introduction, :email, :password, :password_confirmation))
+    @user.attributes = (user_params.permit(:name, :introduction, :place, :latitude, :longitude, :email, :password, :password_confirmation))
     if @user.save
       redirect_to user_path(@user.id), notice: 'user updated!'
     else
@@ -35,10 +36,14 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
     @user = User.find(params[:id]) #if current_user.present?
   end
 
+  # TODO:いずれ改善
   def user_params
     params.require(:user).permit(
       :name,
       :introduction,
+      :place,
+      :latitude,
+      :longitude,
       :email,
       :password,
       :password_confirmation,

@@ -1,12 +1,16 @@
 class Post < ApplicationRecord
-  has_one :thing, dependent: :destroy
-  has_one :place, dependent: :destroy
-  accepts_nested_attributes_for :thing, allow_destroy: true
-  accepts_nested_attributes_for :place, allow_destroy: true
   belongs_to :user
-  # has_many :post_tags, dependent: :destroy
-  # has_many :relation_tags, through: :post_labels, source: :label
   has_and_belongs_to_many :tags
+  has_one :address, as: :addressable, dependent: :destroy
+  has_one :asset, as: :assetable, dependent: :destroy
+
+  accepts_nested_attributes_for :address, allow_destroy: true
+  accepts_nested_attributes_for :asset, allow_destroy: true
+
+
+  validates :place, presence: true, length: { in: 1..50 }
+  validates :thing, presence: true, length: { in: 1..50 }
+
 
   after_create do
     post = Post.find_by(id: self.id)
