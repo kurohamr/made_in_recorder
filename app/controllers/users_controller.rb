@@ -35,6 +35,7 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
     @user = User.find(params[:id]) #if current_user.present?
   end
 
+  # TODO:いずれ改善
   def user_params
     params.require(:user).permit(
       :name,
