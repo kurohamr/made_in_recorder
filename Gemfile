@@ -24,6 +24,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'enum_help'
 gem 'faker'
 gem 'devise'
+gem 'gmaps4rails'
+gem "geocoder"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -37,6 +39,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
   gem 'launchy'
+  gem 'dotenv-rails'
 end
 
 group :development do

@@ -7,4 +7,7 @@ class User < ApplicationRecord
   has_one :address, as: :addressable, dependent: :destroy
   has_one :asset, as: :assetable, dependent: :destroy
   has_many :posts, dependent: :destroy
+
+  geocoded_by :place
+  after_validation :geocode
 end

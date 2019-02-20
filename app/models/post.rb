@@ -7,10 +7,11 @@ class Post < ApplicationRecord
   accepts_nested_attributes_for :address, allow_destroy: true
   accepts_nested_attributes_for :asset, allow_destroy: true
 
-
   validates :place, presence: true, length: { in: 1..50 }
   validates :thing, presence: true, length: { in: 1..50 }
 
+  geocoded_by :place
+  after_validation :geocode
 
   after_create do
     post = Post.find_by(id: self.id)

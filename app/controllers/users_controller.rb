@@ -7,14 +7,17 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
   end
 
   def show
-    # binding.pry
+    @hash = Gmaps4rails.build_markers(@user) do |user, marker|
+      marker.lat user.latitude
+      marker.lng user.longitude
+      marker.infowindow user.place
+    end
   end
 
   def edit
   end
 
   def update
-    binding.pry
     @user.build_asset(user_params[:asset])
     @user.build_asset.image = user_params[:asset][:image]
     @user.build_address(user_params[:address])
