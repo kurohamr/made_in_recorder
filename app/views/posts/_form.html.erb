@@ -16,7 +16,7 @@
     <%= form.text_field :thing %>
   </div>
 
-    <%= asset_form.fields :asset do |asset_form| %>
+    <%= form.fields :asset do |asset_form| %>
       <%= asset_form.label :image %>
       <%= asset_form.file_field :image %>
     <% end %>
@@ -27,8 +27,8 @@
   </div>
 
   <div class="field">
-    <%= place_form.label :place %>
-    <%= place_form.text_field :place %>
+    <%= form.label :place %>
+    <%= form.text_field :place %>
   </div>
 
     <%= form.fields :address do |address_form| %>

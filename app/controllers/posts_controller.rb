@@ -10,8 +10,8 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @post.place.build_address()
-    @post.thing.build_asset()
+    @post.build_address()
+    @post.build_asset()
   end
 
   def create

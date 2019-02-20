@@ -14,10 +14,11 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
   end
 
   def update
+    binding.pry
     @user.build_asset(user_params[:asset])
     @user.build_asset.image = user_params[:asset][:image]
     @user.build_address(user_params[:address])
-    @user.attributes = (user_params.permit(:name, :introduction, :place,  :latitude, :longitude, :email, :password, :password_confirmation))
+    @user.attributes = (user_params.permit(:name, :introduction, :place, :latitude, :longitude, :email, :password, :password_confirmation))
     if @user.save
       redirect_to user_path(@user.id), notice: 'user updated!'
     else
