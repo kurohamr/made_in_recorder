@@ -16,13 +16,13 @@ ActiveRecord::Schema.define(version: 2019_02_19_062922) do
   enable_extension "plpgsql"
 
   create_table "addresses", force: :cascade do |t|
-    t.string "country"
-    t.string "state"
-    t.string "city"
-    t.string "address1"
-    t.string "address2"
-    t.string "address3"
-    t.string "postcode"
+    t.string "country", default: "", null: false
+    t.string "state", default: "", null: false
+    t.string "city", default: "", null: false
+    t.string "address1", default: "", null: false
+    t.string "address2", default: "", null: false
+    t.string "address3", default: "", null: false
+    t.string "postcode", default: "", null: false
     t.string "addressable_type"
     t.bigint "addressable_id"
     t.datetime "created_at", null: false
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 2019_02_19_062922) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string "thing"
-    t.text "description"
+    t.string "thing", null: false
+    t.text "description", default: "", null: false
     t.float "latitude"
     t.float "longitude"
     t.string "place", null: false
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2019_02_19_062922) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table "posts_tags", force: :cascade do |t|
+  create_table "posts_tags", id: false, force: :cascade do |t|
     t.bigint "post_id"
     t.bigint "tag_id"
     t.datetime "created_at", null: false
@@ -68,8 +68,8 @@ ActiveRecord::Schema.define(version: 2019_02_19_062922) do
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
-    t.text "introduction"
-    t.string "place"
+    t.text "introduction", default: "", null: false
+    t.string "place", default: "", null: false
     t.float "latitude"
     t.float "longitude"
     t.datetime "created_at", null: false
