@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2019_02_19_062922) do
   end
 
   create_table "assets", force: :cascade do |t|
-    t.string "image", null: false
+    t.string "image"
     t.string "assetable_type"
     t.bigint "assetable_id"
     t.datetime "created_at", null: false
@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 2019_02_19_062922) do
   create_table "posts", force: :cascade do |t|
     t.string "thing", null: false
     t.text "description", default: "", null: false
-    t.float "latitude"
-    t.float "longitude"
+    t.float "latitude", default: 35.681236, null: false
+    t.float "longitude", default: 139.767125, null: false
     t.string "place", null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -70,8 +70,8 @@ ActiveRecord::Schema.define(version: 2019_02_19_062922) do
     t.string "name", null: false
     t.text "introduction", default: "", null: false
     t.string "place", default: "", null: false
-    t.float "latitude"
-    t.float "longitude"
+    t.float "latitude", default: 35.681236, null: false
+    t.float "longitude", default: 139.767125, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false
