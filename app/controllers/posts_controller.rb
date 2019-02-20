@@ -31,7 +31,13 @@ class PostsController < ApplicationController
     @posts = tag.posts
   end
 
-  def show; end
+  def show
+    @hash = Gmaps4rails.build_markers(@post) do |post, marker|
+      marker.lat post.latitude
+      marker.lng post.longitude
+      marker.infowindow post.thing
+    end
+  end
 
   def edit; end
 

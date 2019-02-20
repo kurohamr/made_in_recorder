@@ -7,4 +7,16 @@
 <p>state: <%= @user.address.state %></p>
 <p>city: <%= @user.address.city %></p>
 
+<div id="map" style="width: 800px; height: 400px;"></div>
+
+<script>
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%= raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setZoom(8);
+  });
+</script>
+
 <%= link_to "User edit", edit_user_path(id: @user.id) %>
