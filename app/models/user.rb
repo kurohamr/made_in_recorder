@@ -13,8 +13,9 @@ class User < ApplicationRecord
   validates :place, presence: true, length: { in: 1..50 }
   validates :latitude, presence: true
   validates :longitude, presence: true
-  validates :email, presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
-  validates :password, presence: true, length: { in: 6..20 }
+  validates :email, presence: true, uniqueness: true,
+                    format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+  validates :password, presence: true, length: { in: 6..30 }
 
   geocoded_by :place
   after_validation :geocode
