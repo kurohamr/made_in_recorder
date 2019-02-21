@@ -5,8 +5,7 @@ class Asset < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   #TODO: バリデーションかテーブルでnull falseか検討
-  # validates :image, presence: true, if: :post_image?
-  #
+  validates :image, presence: true
   # def post_image?
   #   assetable_type == "Post"
   # end
