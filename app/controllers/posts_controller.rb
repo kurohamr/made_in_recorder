@@ -1,11 +1,12 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:index, :hashtags, :new, :create, :edit, :update, :destroy]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  # before_action :login_required
+  before_action :check_correct_user, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @posts = Post.all
+    @posts = Post.all.where(user_id: current_user.id)
     #allじゃなくする
+    # binding.pry
   end
 
   def new
@@ -28,7 +29,7 @@ class PostsController < ApplicationController
 
   def hashtags
     tag = Tag.find_by(name: params[:name])
-    @posts = tag.posts
+    @posts = tag.posts.where(user_id: current_user.id)
   end
 
   def show

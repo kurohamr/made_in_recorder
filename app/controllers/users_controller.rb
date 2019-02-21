@@ -1,10 +1,7 @@
 class UsersController < ApplicationController
-before_action :authenticate_user!, only: [:edit, :update, :destroy, :new, :create, :show]
+before_action :authenticate_user!, only: [:edit, :update]#,:destroy]
 before_action :set_user, only: [:show, :edit, :update, :destroy]
-
-  def index
-    @users = User.all #TODO/ allじゃなくする
-  end
+before_action :check_correct_user, only: [:edit, :update, :destroy]#,:show]
 
   def show
     @hash = Gmaps4rails.build_markers(@user) do |user, marker|
@@ -14,8 +11,7 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @user.build_asset(user_params[:asset])
@@ -29,9 +25,7 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
     end
   end
 
-  def destroy
-
-  end
+  # def destroy; end
 
   private
 
@@ -63,37 +57,4 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
         :postcode
       ])
   end
-
-  # def user_params
-  #   params.require(:user).permit(
-  #     :name,
-  #     :introduction,
-  #     :email,
-  #     :password,
-  #     :password_confirmation,
-  #     asset: [
-  #       :image
-  #     ],
-  #     address:  [
-  #       :country,
-  #       :state,
-  #       :city,
-  #       :address1,
-  #       :address2,
-  #       :address3,
-  #       :postcode
-  #     ],
-  #     asset_attributes: [
-  #       :image
-  #     ],
-  #     address_attributes: [
-  #       :country,
-  #       :state,
-  #       :city,
-  #       :address1,
-  #       :address2,
-  #       :address3,
-  #       :postcode
-  #     ])
-  # end
 end
