@@ -7,9 +7,9 @@ class Post < ApplicationRecord
   accepts_nested_attributes_for :address, allow_destroy: true
   accepts_nested_attributes_for :asset, allow_destroy: true
 
-  validates :place, presence: true, length: { in: 1..50 }
-  validates :thing, presence: true, length: { in: 1..50 }
-  validates :description, length: {maximum: 200}
+  validates :place, presence: true, length: { maximum: 50 }
+  validates :thing, presence: true, length: { maximum: 50 }
+  validates :description, length: { maximum: 200 }
   validates :latitude, presence: true
   validates :longitude, presence: true
   validates :user_id, presence: true
