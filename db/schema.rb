@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2019_02_19_062922) do
   end
 
   create_table "assets", force: :cascade do |t|
-    t.string "image"
+    t.string "image", default: "", null: false
     t.string "assetable_type"
     t.bigint "assetable_id"
     t.datetime "created_at", null: false

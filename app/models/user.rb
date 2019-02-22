@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable #, :confirmable
 
@@ -10,17 +8,24 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { in: 1..20 }
   validates :introduction, length: { maximum: 200 }
+<<<<<<< HEAD
   #validates :place, presence: true, length: { maximum: 50 }#, if: :edit_user?
+=======
+  validates :place, presence: true, length: { maximum: 50 }, on: :update
+>>>>>>> #24-2
   validates :latitude, presence: true
   validates :longitude, presence: true
   validates :email, presence: true, uniqueness: true,
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
   validates :password, presence: true, length: { in: 6..30 }
+<<<<<<< HEAD
 
   # def edit_user?
   #   action_name == "edit"
   # end
 
+=======
+>>>>>>> #24-2
   geocoded_by :place
   after_validation :geocode
 
