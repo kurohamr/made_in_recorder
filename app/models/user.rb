@@ -1,3 +1,8 @@
+# require require 'net/http'
+# require 'uri'
+# require 'json'
+require 'open-uri'
+
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable #, :confirmable
@@ -18,4 +23,13 @@ class User < ApplicationRecord
   geocoded_by :place
   after_validation :geocode
 
+  before_validation do
+    self.build_asset() if self.asset.nil?
+    self.asset.image =  get_image_request("noimage-300x267.png") if self.asset.image.nil? || self.asset.image.url.nil?
+  end
+
+  def get_image_request(image_name)
+     return open(Rails.env == 'production' ? "" : "http://localhost:3000/assets/#{image_name}")
+     # return open(Rails.env == 'production' ? "本番環境のドメイン" : "http://localhost:3000/assets/#{image_name}")
+  end
 end
