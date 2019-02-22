@@ -27,10 +27,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :introduction, :place])
   end
 
-  def check_correct_user
-    if user_signed_in? && current_user.id != @user.id
-        flash[:notice] = "権限がありません"
-        redirect_to(root_path)
-    end
-  end
+  # def check_correct_user
+  #   if user_signed_in? && current_user.id != @user.id
+  #       flash[:notice] = "権限がありません"
+  #       redirect_to(posts_path)
+  #   end
+  # end
 end
