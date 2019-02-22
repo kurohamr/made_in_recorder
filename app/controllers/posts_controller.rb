@@ -15,14 +15,17 @@ class PostsController < ApplicationController
   end
 
   def create
-    binding.pry
     @post = Post.new(post_params)
     @post.user = current_user
-    @post.asset.image = params[:post][:asset_attributes][:image].tempfile
-    # binding.pry
-    if @post.save
-      redirect_to post_path(@post.id)
+    if params[:post][:asset_attributes]
+      @post.asset.image = params[:post][:asset_attributes][:image].tempfile
+      if @post.save
+        redirect_to post_path(@post.id)
+      else
+        render 'edit'
+      end
     else
+      flash.now[:notice] = "画像が必要です"
       render 'edit'
     end
   end
