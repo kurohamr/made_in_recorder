@@ -1,10 +1,10 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_and_belongs_to_many :tags
-  has_one :address, as: :addressable, dependent: :destroy
+  # has_one :address, as: :addressable, dependent: :destroy
   has_one :asset, as: :assetable, dependent: :destroy
 
-  accepts_nested_attributes_for :address, allow_destroy: true
+  # accepts_nested_attributes_for :address, allow_destroy: true
   accepts_nested_attributes_for :asset, allow_destroy: true
 
   validates :place, presence: true, length: { maximum: 50 }
@@ -13,7 +13,6 @@ class Post < ApplicationRecord
   validates :latitude, presence: true
   validates :longitude, presence: true
   validates :user_id, presence: true
-  validates :asset, presence: true
 
   geocoded_by :place
   after_validation :geocode

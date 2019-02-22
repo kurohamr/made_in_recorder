@@ -7,7 +7,7 @@ Made in Recorder
 買ったものの製造地・生産地を記録します。
 
 ## コンセプト
-好きなものがどこから来たのか地図で見れたら嬉しくありませんか？
+好きなものがどこから来たのか、どこのブランドかを地図で見れたら嬉しくありませんか？
 
 ## バージョン
 Ruby 2.6.0
@@ -22,8 +22,8 @@ Rails 5.2.2
   - [ ] (作られた場所情報のマーカーをマップに一覧表示)
 - [ ] 投稿機能
   - [ ] 名前と画像と製造地情報は必須
-  - [ ] タグ選択機能
-  - [ ] (タグ追加機能)
+  - [ ] ハッシュタグ選択機能
+  - [ ] ハッシュタグ追加機能
 - [ ] 投稿詳細確認機能
   - [ ] 地図を表示して作られた場所にマーカーを設置
   - [ ] (基本位置と作られた場所の両方にマーカーを設置して線で結ぶ)
@@ -34,7 +34,7 @@ Rails 5.2.2
 https://docs.google.com/spreadsheets/d/1v24HhlVa0P1CbKKrrtFDMEily5rakp-YMSd9HYdFVjs/edit?usp=sharing
 
 ## テーブル定義
-https://cacoo.com/diagrams/8VgVHYFWWaAFuWd6/4D5D9  
+https://cacoo.com/diagrams/8VgVHYFWWaAFuWd6/C7EED  
 https://docs.google.com/spreadsheets/d/13D8XlkKxKejtQ6SAXisJe1FJ32A-1t0GfOktPhEp0As/edit?usp=sharing
 
 ## 画面遷移図
@@ -47,3 +47,5 @@ https://cacoo.com/diagrams/qIDKvsXIcbwCn3f0/2FBE8
 * carrierwave
 * mini_magick
 * devise
+* gmaps4rails
+* geocoder

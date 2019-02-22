@@ -15,21 +15,6 @@ ActiveRecord::Schema.define(version: 2019_02_19_062922) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "addresses", force: :cascade do |t|
-    t.string "country", default: "", null: false
-    t.string "state", default: "", null: false
-    t.string "city", default: "", null: false
-    t.string "address1", default: "", null: false
-    t.string "address2", default: "", null: false
-    t.string "address3", default: "", null: false
-    t.string "postcode", default: "", null: false
-    t.string "addressable_type"
-    t.bigint "addressable_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
-  end
-
   create_table "assets", force: :cascade do |t|
     t.string "image", default: "", null: false
     t.string "assetable_type"

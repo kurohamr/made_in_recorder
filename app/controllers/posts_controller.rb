@@ -6,28 +6,29 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all.where(user_id: current_user.id)
     #allじゃなくする
-    # binding.pry
   end
 
   def new
     @post = Post.new
-    @post.build_address()
+    # @post.build_address()
     @post.build_asset()
   end
 
   def create
     @post = Post.new(post_params)
     @post.user = current_user
+    @post.build_asset()
     if params[:post][:asset_attributes]
       @post.asset.image = params[:post][:asset_attributes][:image].tempfile
-      if @post.save
-        redirect_to post_path(@post.id)
-      else
-        render 'edit'
-      end
     else
-      flash.now[:notice] = "画像が必要です"
-      render 'edit' #TODO:ここから飛ぶと画像のフォームがなくなる
+      render 'new'
+      flash[:notice] = "画像がありません"
+      return
+    end
+    if @post.save
+      redirect_to post_path(@post.id)
+    else
+      render 'new'
     end
   end
 
@@ -44,7 +45,9 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @post.asset.image.cache! unless @post.asset.image.blank?
+  end
 
   def update
     if @post.update(post_params)
@@ -68,7 +71,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    # :image, :image_cahce
     params.require(:post).permit(
       :description,
       :user_id,
@@ -77,24 +79,19 @@ class PostsController < ApplicationController
       :latitude,
       :longitude,
         asset_attributes: [
-          :image
-        ],
-        address_attributes: [
-          :country,
-          :state,
-          :city,
-          :address1,
-          :address2,
-          :address3,
-          :postcode
-        ],
-    )
+          :image,
+          :image_cache
+        ],)
   end
 
   def check_correct_user
-    if user_signed_in? && current_user.id != @post.id
+    if user_signed_in? && current_user.id != @post.user_id
         flash[:notice] = "権限がありません"
-        redirect_to(root_path)
+        redirect_to(posts_path)
     end
   end
+  # def set_default_image(post)
+  #   post.asset.image =  Pathname.new("#{Rails.public_path}/noimage.jpg").open if post.asset.image.nil?
+  #   return post
+  # end
 end

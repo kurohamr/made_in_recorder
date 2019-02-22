@@ -1,13 +1,10 @@
 <h2>User detail</h2>
 <p>user name: <%= @user.name %></p>
 <% if @user.asset.present? %>
-  <p>profile image: <%= image_tag(@user.asset.image.to_s) %></p>
+  <p>profile image: <%= image_tag(@user.asset.image.url) %></p>
 <% end %>
 <p>introduction: <%= @user.introduction %></p>
 <p>place: <%= @user.place %></p>
-<p>country: <%= @user.address.country %></p>
-<p>state: <%= @user.address.state %></p>
-<p>city: <%= @user.address.city %></p>
 
 <div id="map" style="width: 800px; height: 400px;"></div>
 
