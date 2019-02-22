@@ -11,7 +11,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @post.build_address()
+    # @post.build_address()
     @post.build_asset()
   end
 
@@ -79,15 +79,15 @@ class PostsController < ApplicationController
         asset_attributes: [
           :image
         ],
-        address_attributes: [
-          :country,
-          :state,
-          :city,
-          :address1,
-          :address2,
-          :address3,
-          :postcode
-        ],
+        # address_attributes: [
+        #   :country,
+        #   :state,
+        #   :city,
+        #   :address1,
+        #   :address2,
+        #   :address3,
+        #   :postcode
+        # ],
     )
   end
 

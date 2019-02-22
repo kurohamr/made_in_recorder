@@ -21,7 +21,7 @@ before_action :check_edit_right, only: [:edit, :update, :destroy]#,:show]
       @user.build_asset(user_params[:asset])
       @user.build_asset.image = user_params[:asset][:image]
     end
-    @user.build_address(user_params[:address])
+    # @user.build_address(user_params[:address])
     @user.attributes = (user_params.permit(:name, :introduction, :place, :latitude, :longitude, :email, :password, :password_confirmation))
     if @user.save
       redirect_to user_path(@user.id), notice: 'user updated!'
@@ -53,15 +53,16 @@ before_action :check_edit_right, only: [:edit, :update, :destroy]#,:show]
       asset: [
         :image
       ],
-      address:  [
-        :country,
-        :state,
-        :city,
-        :address1,
-        :address2,
-        :address3,
-        :postcode
-      ])
+      # address:  [
+      #   :country,
+      #   :state,
+      #   :city,
+      #   :address1,
+      #   :address2,
+      #   :address3,
+      #   :postcode
+      # ]
+    )
   end
 
   def check_edit_right

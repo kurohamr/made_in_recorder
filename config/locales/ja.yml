@@ -23,14 +23,14 @@ ja:
         remember_me: "ログインを記憶"
       asset:
         image: "イメージ"
-      address:
-        country: "国名"
-        state: "県名・州名"
-        city: "市町村名"
-        address1: "住所1"
-        address2: "住所2"
-        address3: "住所3"
-        postcode: "郵便番号"
+      # address:
+      #   country: "国名"
+      #   state: "県名・州名"
+      #   city: "市町村名"
+      #   address1: "住所1"
+      #   address2: "住所2"
+      #   address3: "住所3"
+      #   postcode: "郵便番号"
       tag:
         name: "タグ名"
     errors:

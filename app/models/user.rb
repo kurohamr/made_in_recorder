@@ -2,7 +2,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable #, :confirmable
 
-  has_one :address, as: :addressable, dependent: :destroy
+  # has_one :address, as: :addressable, dependent: :destroy
   has_one :asset, as: :assetable, dependent: :destroy
   has_many :posts, dependent: :destroy
 
