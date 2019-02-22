@@ -34,7 +34,7 @@ Rails 5.2.2
 https://docs.google.com/spreadsheets/d/1v24HhlVa0P1CbKKrrtFDMEily5rakp-YMSd9HYdFVjs/edit?usp=sharing
 
 ## テーブル定義
-https://cacoo.com/diagrams/8VgVHYFWWaAFuWd6/4D5D9  
+https://cacoo.com/diagrams/8VgVHYFWWaAFuWd6/C7EED  
 https://docs.google.com/spreadsheets/d/13D8XlkKxKejtQ6SAXisJe1FJ32A-1t0GfOktPhEp0As/edit?usp=sharing
 
 ## 画面遷移図
