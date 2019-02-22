@@ -10,6 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+# def generateImage(limit=100)
+#   return
+# end
+
 ActiveRecord::Schema.define(version: 2019_02_19_062922) do
 
   # These are extensions that must be enabled in order to support this database
