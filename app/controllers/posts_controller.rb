@@ -1,11 +1,12 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:index, :hashtags, :new, :create, :edit, :update, :destroy]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  # before_action :login_required
+  before_action :check_correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @posts = Post.all
+    @posts = Post.all.where(user_id: current_user.id)
     #allじゃなくする
+    # binding.pry
   end
 
   def new
@@ -17,18 +18,22 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = current_user
-    @post.asset.image = params[:post][:asset_attributes][:image].tempfile
-    # binding.pry
-    if @post.save
-      redirect_to post_path(@post.id)
+    if params[:post][:asset_attributes]
+      @post.asset.image = params[:post][:asset_attributes][:image].tempfile
+      if @post.save
+        redirect_to post_path(@post.id)
+      else
+        render 'edit'
+      end
     else
-      render 'edit'
+      flash.now[:notice] = "画像が必要です"
+      render 'edit' #TODO:ここから飛ぶと画像のフォームがなくなる
     end
   end
 
   def hashtags
     tag = Tag.find_by(name: params[:name])
-    @posts = tag.posts
+    @posts = tag.posts.where(user_id: current_user.id)
   end
 
   def show
@@ -85,7 +90,11 @@ class PostsController < ApplicationController
         ],
     )
   end
-  # def login_required
-  #   redirect_to new_session_path unless current_user
-  # end
+
+  def check_correct_user
+    if user_signed_in? && current_user.id != @post.id
+        flash[:notice] = "権限がありません"
+        redirect_to(root_path)
+    end
+  end
 end
