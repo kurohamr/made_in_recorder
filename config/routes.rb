@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-#TODO/ root to をセッション有無で分岐
-  # root to: 'posts#index'
 
-  devise_for :users #resources :usersより上に書く
-
+  devise_for :users, :controllers => {
+    registrations: 'users/registrations'
+   }
   devise_scope :user do
     authenticated :user do
       root 'posts#index', as: :authenticated_root

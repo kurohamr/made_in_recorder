@@ -23,10 +23,10 @@ before_action :check_edit_right, only: [:edit, :update, :destroy]#,:show]
     @user.attributes = (user_params.permit(:name, :introduction, :place, :latitude, :longitude, :email, :password, :password_confirmation))
     if @user.save
       redirect_to user_path(@user.id), notice: 'user updated!'
-      # sign_in_and_redirect @user 再度セッションを作る記述をする
     else
       render 'edit'
     end
+    sign_in(@user, bypass: true)
   end
 
   # def destroy; end
