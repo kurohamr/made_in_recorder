@@ -27,7 +27,7 @@ class PostsController < ApplicationController
       end
     else
       flash.now[:notice] = "画像が必要です"
-      render 'edit'
+      render 'edit' #TODO:ここから飛ぶと画像のフォームがなくなる
     end
   end
 
