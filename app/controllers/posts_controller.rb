@@ -21,8 +21,8 @@ class PostsController < ApplicationController
     if params[:post][:asset_attributes]
       @post.asset.image = params[:post][:asset_attributes][:image].tempfile
     else
-      flash[:notice] = "画像がありません"
       render 'new'
+      flash[:notice] = "画像がありません"
       return
     end
     if @post.save
@@ -45,7 +45,9 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @post.asset.image.cache! unless @post.asset.image.blank?
+  end
 
   def update
     if @post.update(post_params)
@@ -77,7 +79,8 @@ class PostsController < ApplicationController
       :latitude,
       :longitude,
         asset_attributes: [
-          :image
+          :image,
+          :image_cache
         ],)
   end
 
@@ -87,7 +90,6 @@ class PostsController < ApplicationController
         redirect_to(posts_path)
     end
   end
-  # 
   # def set_default_image(post)
   #   post.asset.image =  Pathname.new("#{Rails.public_path}/noimage.jpg").open if post.asset.image.nil?
   #   return post

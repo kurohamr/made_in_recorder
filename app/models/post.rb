@@ -13,7 +13,6 @@ class Post < ApplicationRecord
   validates :latitude, presence: true
   validates :longitude, presence: true
   validates :user_id, presence: true
-  # validates :asset, presence: true
 
   geocoded_by :place
   after_validation :geocode
