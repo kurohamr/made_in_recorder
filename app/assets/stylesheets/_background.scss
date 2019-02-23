@@ -13,12 +13,41 @@
       position: relative;
       top: 0;
       left: 0;
-      background-color: rgba(0, 0, 0, 0.4)
+      background-color: rgba(0, 0, 0, 0.7)
     }
   }
 }
 
-#above_content {
+#above_content_signin {
   position: absolute;
   top: 10vh;
+  text-align: center;
+  width: 50vh;
+}
+
+#above_content_signup {
+  position: absolute;
+  top: 10vh;
+  text-align: center;
+}
+
+.jumbotron {
+  background-color: white;
+
+}
+
+.field {
+  margin-top: 20px;
+}
+
+.btn {
+  margin-top: 20px;
+}
+
+.render-signin {
+  margin-top: 20px;
+}
+
+.render-signup {
+  margin-top: 20px;
 }
