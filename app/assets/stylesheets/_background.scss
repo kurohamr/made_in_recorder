@@ -1,0 +1,24 @@
+
+.background {
+  width: 100vw; //view width ブラウザの横幅のナンパーセント
+  height: 100vh; //view height ブラウザの横幅のナンパーセント
+  position: relative;
+  &__image {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    &__filter {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.4)
+    }
+  }
+}
+
+#above_content {
+  position: absolute;
+  top: 10vh;
+}
