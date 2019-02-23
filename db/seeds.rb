@@ -26,10 +26,11 @@ def generate_user(limit=100)
   end
 end
 
-def generate_post(limit=100, users_limit=100)
+def generate_post(limit=100, user_limit=100)
+  random = Random.new
   limit.times do |n|
     Post.create!(
-      user_id: [1 .. user_limit].sample,
+      user_id: random.rand(1..user_limit),
       thing: Faker::Food.dish,
       description: Faker::Food.description,
       place: Faker::Nation.capital_city,
@@ -44,17 +45,18 @@ def generate_image(limit=100)
   extend_name = ".jpg"
   files = []
   limit.times do |n|
-    files.push(open(base_url + (n % 12) + extend_name))
+    files.push(open(base_url + (n % 12).to_s + extend_name))
   end
 end
 
 def generate_asset(limit=100, user_limit=100, post_limit=100)
   images = generate_image(limit)
+  random = Random.new
   limit.times do |n|
     #偶数はpost 機数はuser
     type = n.even? ? "Post" : "User"
-    f_id = n.even? ? [1 .. post_limit].sample : [1 .. user_limit]
-    generate_post_tag(f_id, (n % 12) + 1) if n.even?
+    f_id = n.even? ? random.rand(1..post_limit) : random.rand(1..user_limit)
+    generate_post_tag(f_id, (n % 11) + 1) if n.even?
     Asset.create!(
       image: images[n],
       assetable_type: type,
@@ -97,8 +99,15 @@ def generate_tag(limit=11) #画像の種類数
 end
 
 def generate_post_tag(post_id, tag_id)
-  Post_tag(
+  PostTag.create!(
     post_id: post_id,
     tag_id: tag_id
   )
 end
+
+routing(
+  100,
+  100,
+  100,
+  11
+)

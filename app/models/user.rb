@@ -29,7 +29,7 @@ class User < ApplicationRecord
   end
 
   def get_image_request(image_name)
-     return open(Rails.env == 'production' ? "" : "http://localhost:3000/assets/#{image_name}")
+     #return open(Rails.env == 'production' ? "" : "http://localhost:3000/assets/#{image_name}")
      # return open(Rails.env == 'production' ? "本番環境のドメイン" : "http://localhost:3000/assets/#{image_name}")
   end
 end
