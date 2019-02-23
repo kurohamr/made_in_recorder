@@ -12,12 +12,33 @@
     <script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'></script>
   </head>
 
+
+
+
   <body>
-    <% if user_signed_in? %>
-      <%= link_to "New post", new_post_path %>
-      <%= link_to "User", user_path(id: current_user.id) %>
-      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-    <% end %>
+    <header class="header">
+      <p>
+        <%= link_to posts_path do %>
+          <i class="fas fa-map-marker-alt">  Made in Recorder</i>
+        <% end %>
+      </p>
+      <li>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fas fa-sign-out-alt"></i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to user_path(id: current_user.id) do %>
+          <i class="fas fa-user"></i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to new_post_path do %>
+          <i class="fas fa-plus-square"></i>
+        <% end %>
+      </li>
+    </header>
+
 
     <% if notice %>
       <p class="alert alert-notice"><%= notice %></p>
