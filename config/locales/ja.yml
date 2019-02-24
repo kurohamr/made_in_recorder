@@ -9,8 +9,8 @@ ja:
       tag: "タグ"
     attributes:
       post:
-        name: "品名"
-        thing: "品名"
+        name: "もの"
+        thing: "もの"
         place: "場所"
         description: "説明"
       user:
