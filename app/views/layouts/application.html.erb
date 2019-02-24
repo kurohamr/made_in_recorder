@@ -39,7 +39,7 @@
     <% end %>
 
     <div class="container">
-      <% if notice %>
+      <% if notice && current_user != nil %>
         <p class="alert alert-notice"><%= notice %></p>
       <% end %>
       <% if alert %>

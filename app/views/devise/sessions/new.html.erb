@@ -3,7 +3,7 @@
     <%= render 'devise/shared/background' %>
     <div class="col-sm-6 col-sm-offset-3" id="above_content_signin">
         <div class="jumbotron mt-4">
-        <h2>Log in</h2>
+        <h2>Sign in</h2>
 
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="field">
@@ -24,7 +24,7 @@
           <% end %>
 
           <div class="actions">
-            <%= f.submit "Log in", class: "btn btn-primary" %>
+            <%= f.submit "Sign in", class: "btn btn-primary" %>
           </div>
         <% end %>
         <div class="render-signup">
