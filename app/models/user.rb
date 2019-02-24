@@ -25,7 +25,7 @@ class User < ApplicationRecord
 
   before_validation do
     self.build_asset() if self.asset.nil?
-    self.asset.image =  get_image_request("noimage-300x267.png") if self.asset.image.nil? || self.asset.image.url.nil?
+    self.asset.image =  get_image_request("noimage.png") if self.asset.image.nil? || self.asset.image.url.nil?
   end
 
   def get_image_request(image_name)
