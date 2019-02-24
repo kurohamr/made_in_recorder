@@ -18,9 +18,27 @@
 
     <%= form.fields :asset do |asset_form| %>
       <%= asset_form.label :image %>
-      <%= asset_form.file_field :image %>
+      <%= asset_form.file_field :image, id: :post_img %>
       <%= asset_form.hidden_field :image_cache %>
     <% end %>
+
+    <%= image_tag(@post.asset.image.url, id: :img_prev) %>
+    <script type="text/javascript">
+      $(function() {
+       function readURL(input) {
+         if (input.files && input.files[0]) {
+           var reader = new FileReader();
+           reader.onload = function (e) {
+             $('#img_prev').attr('src', e.target.result);
+           }
+           reader.readAsDataURL(input.files[0]);
+         }
+       }
+       $("#post_img").change(function(){
+         readURL(this);
+       });
+      });
+      </script>
 
   <div class="field">
     <%= form.label :description %>
