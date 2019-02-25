@@ -15,6 +15,12 @@
    border-radius: 75px;
 }
 
+#user_profile_image {
+  -webkit-border-radius: 75px;
+  -moz-border-radius: 75px;
+   border-radius: 75px;
+}
+
 .user-submit-btn {
   float: right;
   margin-bottom: 30px;
@@ -24,4 +30,21 @@
 .back-btn {
   float: right;
   margin-right: 15px;
+}
+
+.user-name {
+  font-weight: bold;
+  margin: 25px;
+}
+
+.introduction {
+  min-height: 150px;
+  line-height: 1.5;
+  // font-family: 'Verdana';
+  // text-align: center;
+  // letter-spacing: 0.2em;
+}
+
+.place-space {
+  margin-top: 25px;
 }

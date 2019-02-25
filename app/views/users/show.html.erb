@@ -1,12 +1,22 @@
-<h2>User detail</h2>
-<p>user name: <%= @user.name %></p>
-<% if @user.asset.present? %>
-  <p>profile image: <%= image_tag(@user.asset.image.url) %></p>
-<% end %>
-<p>introduction: <%= @user.introduction %></p>
-<p>place: <%= @user.place %></p>
+<div class="row">
+  <div class="user-profile col-md-8 col-md-offset-2">
+    <div class="row">
+        <h3 class="user-name"><%= @user.name %></h3>
+        <div class="profile-image-area col-md-4">
+          <% if @user.asset.present? %>
+            <p><%= image_tag(@user.asset.image.url, size: "150x150", id: :user_profile_image) %></p>
+          <% end %>
+        </div>
+      <p class="introduction"><%= @user.introduction %></p>
+      <p class="place-space">位置情報: <%= @user.place %></p>
 
-<div id="map" style="width: 800px; height: 400px;"></div>
+      <div id="map" style="width: 660px; height: 400px;"></div>
+
+    </div>
+  </div>
+</div>
+
+
 
 <script>
   handler = Gmaps.build('Google');
@@ -18,4 +28,4 @@
   });
 </script>
 
-<%= link_to "User edit", edit_user_path(id: @user.id) %>
+<% link_to( user_edit_path ) %>
