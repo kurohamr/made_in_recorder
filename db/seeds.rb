@@ -1,10 +1,10 @@
-require ‘faker’
-require ‘open-uri’
+require 'faker'
+require 'open-uri'
 
 class Seeder
 
  def initialize(
-   user_limit=100,
+   user_limit=5,
    post_limit=100,
    image_limit=12
  )
@@ -14,42 +14,42 @@ class Seeder
    @image_limit=image_limit
  end
 
- def info(str)
-   info = “”
-   info += “------------------------------------------------------------------”
-   info += “\n”
-   info += “******************************************************************”
-   info += “\n”
-   info += ”                            #{str}                                ”
-   info += “\n”
-   info += ”                       user_limit: #{@user_limit}                   ”
-   info += “\n”
-   info += ”                       post_limit: #{@post_limit}                   ”
-   info += “\n”
-   info += ”                       image_limit: #{@image_limit}                 ”
-   info += “\n”
-   info += ”                       asset_limit: #{@user_limit + @post_limit}                 ”
-   info += “\n”
-   info += ”                       tag_limit: #{@image_limit}                   ”
-   info += “\n”
-   info += “******************************************************************”
-   info += “\n”
-   info += “------------------------------------------------------------------”
-   info += “\n”
-
-   puts(info)
- end
+ # def info(str)
+ #   info = ""
+ #   info += "------------------------------------------------------------------"
+ #   info += "\n"
+ #   info += "******************************************************************"
+ #   info += "\n"
+ #   info += "                            #{str}                                "
+ #   info += "\n"
+ #   info += "                       user_limit: #{@user_limit}                   "
+ #   info += "\n"
+ #   info += "                       post_limit: #{@post_limit}                   "
+ #   info += "\n"
+ #   info += "                       image_limit: #{@image_limit}                 "
+ #   info += "\n"
+ #   info += "                       asset_limit: #{@user_limit + @post_limit}                 "
+ #   info += "\n"
+ #   info += "                       tag_limit: #{@image_limit}                   "
+ #   info += "\n"
+ #   info += "******************************************************************"
+ #   info += "\n"
+ #   info += "------------------------------------------------------------------"
+ #   info += "\n"
+ #
+ #   puts(info)
+ # end
 
  def run
-   begin
-     self.info(“Start”)
+   # begin
+     # self.info("Start")
      self.generate_tag(@image_limit)
      self.generate_user(@user_limit)
      self.generate_post(@post_limit, @user_limit)
-     self.info(“Success”)
-   rescue e
-     self.info(“Fail because: #{e} “)
-   end
+     # self.info("Success")
+   # rescue e
+   #   self.info("Fail because: #{e} ")
+   # end
  end
 
  # private
@@ -59,7 +59,7 @@ class Seeder
      user = User.new(
        name: Faker::Football.player,
        email: Faker::Internet.email,
-       password: “password”,
+       password: "password",
        place: Faker::Nation.capital_city,
        introduction: Faker::Food.description,
        latitude: 35.681236,
@@ -98,32 +98,32 @@ class Seeder
  def generate_tag(limit=12) #画像の種類数
    raise “the number of tag limit is more than the number of existing images ” if limit > 12 # Dir.open(Rails.root.join(‘db’, ‘seed_file’)).length
    limit.times do |n|
-     name = “”
+     name = ""
      case n + 1
        when 1
-         name = “#orslow”
+         name = "#orslow"
        when 2
-         name = “#orslow”
+         name = "#orslow"
        when 3
-         name = “#velvasheen”
+         name = "#velvasheen"
        when 4
-         name = “#saintjames”
+         name = "#saintjames"
        when 5
-         name = “#saintjames”
+         name = "#saintjames"
        when 6
-         name = “#alden”
+         name = "#alden"
        when 7
-         name = “#moscot”
+         name = "#moscot"
        when 8
-         name = “#iwc”
+         name = "#iwc"
        when 9
-         name = “#iwc”
+         name = "#iwc"
        when 10
-         name = “#nomos”
+         name = "#nomos"
        when 11
-         name = “#aesop”
+         name = "#aesop"
        when 12
-         name = “#velvasheen”
+         name = "#velvasheen"
      end
      Tag.create!(
        name: name
@@ -132,9 +132,9 @@ class Seeder
  end
 
  def open_image(limit=12)
-   raise “the number of Image limit is more than the number of existing images ” if limit > 12 # Dir.open(Rails.root.join(‘db’, ‘seed_file’)).length
-   base_url = “https://raw.githubusercontent.com/legopo/made_in_recorder/%2338/db/seed_file/test”
-   extend_name = “.jpg”
+   raise "the number of Image limit is more than the number of existing images " if limit > 12 # Dir.open(Rails.root.join(‘db’, ‘seed_file’)).length
+   base_url = "https://raw.githubusercontent.com/legopo/made_in_recorder/%2338/db/seed_file/test"
+   extend_name = ".jpg"
    files = []
    limit.times do |n|
 files.push(open(base_url + (n % 12).to_s + extend_name))
@@ -144,108 +144,7 @@ files.push(open(base_url + (n % 12).to_s + extend_name))
 end
 
 Seeder.new(
- 100,
+ 5,
  100,
  12
 ).run()
-require 'faker'
-
-if User.count == 0
-  name = "test"
-  email = "test@example.com"
-  password = "password"
-  introduction = "i am first user."
-  place = "渋谷区"
-  User.create!(name: name, email: email, place: place , password: password, introduction: introduction)
-end
-
-
-4.times do |n|
-  name = Faker::Football.player
-  email = Faker::Internet.email
-  password = "password"
-  introduction = Faker::Food.measurement
-  place = Faker::Nation.capital_city
-  User.create!(name: name, email: email, place: place, password: password, introduction: introduction)
-end
-
-n = 0
-
-5.times do |n|
-  n += 1
-  name = Faker::Food.dish
-  assetable_id = n
-  Asset.create!({
-    image: open("app/assets/images/rondo.jpg"),
-    assetable_type: "User",
-    assetable_id: n
-    })
-end
-
-n = 0
-
-5.times do |n|
-  n += 1
-  state = Faker::Nation.capital_city
-  addressable_id = n
-  Address.create!({state: state, addressable_type: "User", addressable_id: n })
-end
-
-20.times do |n|
-  description = Faker::Food.spice
-  user_id = User.all.sample.id
-  place = Faker::Nation.capital_city
-  thing = Faker::Beer.name
-  Post.create!({ description: description, place: place, thing: thing, user_id: user_id})
-end
-
-# n = 0
-#
-# # 20.times do |n|
-# #   n += 1
-# #   name = Faker::Food.fruits
-# #   post_id = n
-# #   Thing.create!({ name: name, post_id: post_id})
-# # end
-#
-# n = 0
-
-# 20.times do |n|
-#   n += 1
-#   name = Faker::Nation.nationality
-#   post_id = n
-#   Place.create!({name: name, post_id: post_id})
-# end
-
-n = 0
-
-# 20.times do |n|
-#   n += 1
-#   name = Faker::Food.dish
-#   assetable_id = n
-#   Asset.create!({
-#     image: open("app/assets/images/levis.jpg"),
-#     assetable_type: "Post",
-#     assetable_id: n
-#     })
-# end
-
-20.times do |n|
-  n += 1
-  name = Faker::Food.dish
-  assetable_id = n
-  Asset.create!({
-    image: open("app/assets/images/levis.jpg"),
-    assetable_id: n,
-    assetable_type: "Thing"
-    })
-end
-
-n = 0
-
-20.times do |n|
-  n += 1
-  state = Faker::Nation.capital_city
-  addressable_id = n
-  Address.create!({state: state, addressable_id: n ,addressable_type: "Place"})
-end
