@@ -3,7 +3,8 @@
     <%= render 'devise/shared/background' %>
     <div class="col-sm-6 col-sm-offset-3" id="above_content_signup">
         <div class="jumbotron mt-4" id="sign_up_menu">
-          <h2>Made in Recorderへ<br>ようこそ！</h2>
+          <h2>Made in Recorderへようこそ！</h2>
+          <p>お気に入りのもののルーツを<br>地図に記録しましょう！</p>
 
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
