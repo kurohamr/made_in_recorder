@@ -17,7 +17,9 @@
       <header class="header">
         <p>
           <%= link_to posts_path do %>
-            <i class="fas fa-map-marker-alt">  Made in Recorder</i>
+            <!-- <i class="fas fa-map-marker-alt">  Made in Recorder</i> -->
+            <%= image_tag("emblemmatic-made-in-recorder-logo-2.png" ,id: :title_image, size: "100x60") %>
+
           <% end %>
         </p>
         <li>
@@ -36,6 +38,7 @@
           <% end %>
         </li>
       </header>
+      <div class="header-padding"></div>
     <% end %>
     <div class="container">
       <% if current_user.present?%>

@@ -12,10 +12,12 @@
   <%= form_with(model: @post, local: true, url: choose_new_or_edit, class: "form-area col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1", html: { style: 'margin-top:30px;' }) do |form| %>
   <div class="row">
     <div class="field thing-field col-md-8">
+      <%= form.label :thing %>
       <%= form.text_field :thing, class: "form-control", placeholder: "ものの名前を入力してください" %>
     </div>
 
     <div class="field place-field col-md-8">
+      <%= form.label :place %>
       <%= form.text_field :place, class: "form-control", placeholder: "場所を入力してください 例: アメリカ, Tokyo, Los Angeles, 東京タワー" %>
     </div>
 
@@ -33,6 +35,7 @@
       </div>
 
     <div class="field">
+      <%= form.label :description %>
       <%= form.text_area :description, class: "form-control form-description",
       placeholder: "説明を入力してください。ハッシュタグがつけられます 例: #時計 #tokyo"  %>
     </div>

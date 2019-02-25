@@ -1,27 +1,40 @@
-<p>
-  <strong>Name:</strong>
-  <%= @post.thing %>
-</p>
+<div class="row">
+  <div class="post-area col-md-8 col-md-offset-2 col-sm-12">
 
-<p>
-  <strong>Description:</strong>
-    <%= render_with_hashtags(@post.description) %>
-</p>
+    <div class="post-thing-area col-md-6 col-sm-6">
+      <strong>なまえ:</strong>
+      <p><%= @post.thing %></p>
+      <p class="post-image-area"><%= image_tag(@post.asset.image.to_s, id: "post-image-show") %></p>
+    </div>
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @post.latitude %>
-</p>
+    <div class="post-place-area col-md-6 col-sm-6">
+      <strong>ばしょ:</strong>
+        <p><%= @post.place %></p>
+        <div class="col-md-6 post-show-map" id="map"></div>
+    </div>
 
-<p>
-  <strong>Longitude:</strong>
-  <%= @post.longitude %>
-</p>
+    <div class="post-description-area col-md-8">
+      <strong>説明:</strong>
+      <p><%= render_with_hashtags(@post.description) %></p>
+    </div>
+    <div class="post-action-btns col-md-3 col-md-offset-1">
+      <%= link_to '編集', edit_post_path(@post), class: "btn btn-default" %>
+      <%= link_to 'もどる', posts_path, class: "btn btn-default" %>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
 
-<div id="map" style="width: 800px; height: 400px;"></div>
+
 
 <script>
   handler = Gmaps.build('Google');
@@ -32,5 +45,3 @@
     handler.getMap().setZoom(8);
   });
 </script>
-
-<p><%= image_tag(@post.asset.image.to_s) %></p>

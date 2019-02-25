@@ -40,8 +40,13 @@ body {
   border-radius: 3px;
   border: 1px solid #e6e6e6;
   height: 60px;
-  position: relative;
+  left:0;
+  position: sticky;
+  top:0;
+  width:100%;
+  z-index:24;
 }
+
 
 .header i {
   padding-top: 17px;
@@ -64,6 +69,17 @@ body {
 }
 
 .alert {
-  margin-top: 3px;
-   width: 300px;
+  margin-top: 2px;
+   width: 200px;
+}
+
+.btn {
+  font-weight: bold;
+  letter-spacing: .1em;
+}
+
+strong, p, h1, h2, h3, h4 {
+  font-size: 1.2em;
+  letter-spacing: .1em;
+  // line-height: 1.65;
 }

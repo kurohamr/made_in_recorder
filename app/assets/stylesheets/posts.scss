@@ -5,12 +5,12 @@
 .form-area {
   background-color: white !important;
   border-radius: 3px;
-  height: 650px;
-  magrin-top: 30px;
+  height: 710px;
+  magrin-top: 25px;
 }
 
 .field {
-  padding-top: 15px !important;
+  padding-top: 10px !important;
 }
 
 // .submit {
@@ -33,4 +33,49 @@
 
 #post_img {
   padding: 30px;
+}
+
+.post-area {
+  background-color: white;
+  border-radius: 3px;
+  margin-top: 30px;
+  padding-bottom: 5px;
+}
+
+.post-area strong, .post-area p {
+  font-size: 1.2em;
+  letter-spacing: .1em;
+  // line-height: 1.65;
+}
+
+.post-thing-area {
+  margin-top: 10px;
+  // border: solid;
+}
+
+.post-place-area {
+  margin-top: 10px;
+  // border: solid;
+
+}
+
+.post-description-area {
+  margin-top: 10px;
+}
+
+#post-image-show {
+  border-radius: 3px;
+  width: 400px;
+  height: 400px;
+}
+
+.post-show-map {
+  border-radius: 3px;
+  width: 400px;
+  height: 400px;
+  // margin-top: 20px;
+}
+
+.post-action-btns .btn {
+  margin-left: 5px;
 }
