@@ -1,18 +1,22 @@
 <div class="row">
   <div class="user-profile col-md-8 col-md-offset-2">
     <div class="row">
-        <h3 class="user-name"><%= @user.name %></h3>
-        <div class="profile-image-area col-md-4">
-          <% if @user.asset.present? %>
-            <p><%= image_tag(@user.asset.image.url, size: "150x150", id: :user_profile_image) %></p>
-          <% end %>
-        </div>
-      <p class="introduction"><%= @user.introduction %></p>
-      <p class="place-space">位置情報: <%= @user.place %></p>
-
-      <div id="map" style="width: 660px; height: 400px;"></div>
-
+      <h3 class="user-name col-md-4 col-sm-6"><%= @user.name %></h3>
+      <%= link_to "プロフィール編集", edit_user_path(id: @user), class: 'btn btn-default edit-user-btn col-md-3 col-md-offset-3 col-sm-4 col-cm-offset-2' %>
     </div>
+    <div class="row">
+      <div class="profile-image-area col-md-3 col-sm-3">
+        <% if @user.asset.present? %>
+          <p><%= image_tag(@user.asset.image.url, size: "150x150", id: :user_profile_image) %></p>
+        <% end %>
+      </div>
+    <p class="introduction col-md-6 col-md-offset-1 col-sm-6"><%= @user.introduction %></p>
+    </div>
+      <p class="place-space col-md-10">位置情報: <%= @user.place %></p>
+
+      <div id="map" class="col-md-12"style=" height: 400px;"></div>
+      <!-- <div id="map" style="width: 660px; height: 400px;"></div> -->
+
   </div>
 </div>
 
