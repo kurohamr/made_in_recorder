@@ -43,7 +43,7 @@ class Seeder
  def run
    # begin
      # self.info("Start")
-     self.generate_tag(@image_limit)
+     # self.generate_tag(@image_limit)
      self.generate_user(@user_limit)
      self.generate_post(@post_limit, @user_limit)
      # self.info("Success")
@@ -84,52 +84,52 @@ class Seeder
      )
      post.build_asset(image: @images[id % 12])
      post.save!
-     self.generate_post_tag(n + 1, (id % 12) + 1)
+     # self.generate_post_tag(n + 1, (id % 12) + 1)
    end
  end
 
- def generate_post_tag(post_id, tag_id)
-   PostTag.create!(
-     post_id: post_id,
-     tag_id: tag_id
-   )
- end
+ # def generate_post_tag(post_id, tag_id)
+ #   PostTag.create!(
+ #     post_id: post_id,
+ #     tag_id: tag_id
+ #   )
+ # end
 
- def generate_tag(limit=12) #画像の種類数
-   raise “the number of tag limit is more than the number of existing images ” if limit > 12 # Dir.open(Rails.root.join(‘db’, ‘seed_file’)).length
-   limit.times do |n|
-     name = ""
-     case n + 1
-       when 1
-         name = "#orslow"
-       when 2
-         name = "#orslow"
-       when 3
-         name = "#velvasheen"
-       when 4
-         name = "#saintjames"
-       when 5
-         name = "#saintjames"
-       when 6
-         name = "#alden"
-       when 7
-         name = "#moscot"
-       when 8
-         name = "#iwc"
-       when 9
-         name = "#iwc"
-       when 10
-         name = "#nomos"
-       when 11
-         name = "#aesop"
-       when 12
-         name = "#velvasheen"
-     end
-     Tag.create!(
-       name: name
-     )
-   end
- end
+ # def generate_tag(limit=12) #画像の種類数
+ #   raise “the number of tag limit is more than the number of existing images ” if limit > 12 # Dir.open(Rails.root.join(‘db’, ‘seed_file’)).length
+ #   limit.times do |n|
+ #     name = ""
+ #     case n + 1
+ #       when 1
+ #         name = "#orslow"
+ #       when 2
+ #         name = "#orslow"
+ #       when 3
+ #         name = "#velvasheen"
+ #       when 4
+ #         name = "#saintjames"
+ #       when 5
+ #         name = "#saintjames"
+ #       when 6
+ #         name = "#alden"
+ #       when 7
+ #         name = "#moscot"
+ #       when 8
+ #         name = "#iwc"
+ #       when 9
+ #         name = "#iwc"
+ #       when 10
+ #         name = "#nomos"
+ #       when 11
+ #         name = "#aesop"
+ #       when 12
+ #         name = "#velvasheen"
+ #     end
+ #     Tag.create!(
+ #       name: name
+ #     )
+ #   end
+ # end
 
  def open_image(limit=12)
    raise "the number of Image limit is more than the number of existing images " if limit > 12 # Dir.open(Rails.root.join(‘db’, ‘seed_file’)).length

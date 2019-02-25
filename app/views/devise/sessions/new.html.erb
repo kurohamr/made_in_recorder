@@ -1,8 +1,13 @@
 <div class="container">
   <div class="row">
     <%= render 'devise/shared/background' %>
-    <div class="col-sm-6 col-sm-offset-5" id="above_content_signin">
-        <div class="jumbotron mt-4">
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3" id="above_content_signin">
+        <div class="jumbotron sign_in_menu">
+          <% if notice  %>
+            <p class="alert alert-notice"><%= notice %></p>
+          <% elsif alert %>
+            <p class="alert alert-error"><%= alert %></p>
+          <% end %>
         <h2>おかえりなさい！</h2>
 
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

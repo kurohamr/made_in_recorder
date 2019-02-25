@@ -37,13 +37,13 @@
         </li>
       </header>
     <% end %>
-
     <div class="container">
-      <% if notice && current_user != nil %>
-        <p class="alert alert-notice"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class="alert alert-error"><%= alert %></p>
+      <% if current_user.present?%>
+        <% if notice %>
+          <p class="alert alert-success" role="alert"><%= notice %></p>
+        <% elsif alert %>
+          <p class="alert alert-warning" role="alert"><%= alert %></p>
+        <% end %>
       <% end %>
       <%= yield %>
     </div>
