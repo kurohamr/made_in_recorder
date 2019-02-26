@@ -7,6 +7,11 @@
   border-radius: 3px;
   height: 710px;
   magrin-top: 25px;
+  padding-bottom: 750px
+}
+
+.no-post {
+  margin-left: 15px;
 }
 
 .field {
@@ -17,6 +22,10 @@
 //   float: right;
 //   padding-top: 25px;
 // }
+
+.thing-field{
+  margin-top: 0;
+}
 
 .submit-btn {
   float: right;
@@ -43,7 +52,7 @@
   background-color: white;
   border-radius: 3px;
   margin-top: 30px;
-  padding: 20px 15px;
+  padding: 30px 15px;
 }
 
 .post-area strong, .post-area p {
@@ -96,6 +105,10 @@
   padding-top: 15px;
   padding-right: 15px;
   border-radius: 3px;
+}
+
+.post-form-title {
+
 }
 
 #post-image-index {

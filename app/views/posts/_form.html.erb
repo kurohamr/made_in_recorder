@@ -1,16 +1,11 @@
-<% if @post.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= @post.errors.count %>件のエラーがあります</h2>
-    <ul>
-    <% @post.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-<div class="row form-row">
-  <%= form_with(model: @post, local: true, url: choose_new_or_edit, class: "form-area col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1", html: { style: 'margin-top:30px;' }) do |form| %>
+<%= form_with(model: @post, local: true, url: choose_new_or_edit, class: "form-area col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1", html: { style: 'margin-top:30px;' }) do |form| %>
   <div class="row">
+    <% if action_name == 'new' %>
+      <h2 class="post-form-title">投稿作成</h2>
+    <% elsif action_name == 'edit' %>
+      <h2 class="post-form-title">投稿編集</h2>
+    <% end %>
+
     <div class="field thing-field col-md-8">
       <%= form.label :thing %>
       <%= form.text_field :thing, class: "form-control", placeholder: "ものの名前を入力してください" %>
@@ -35,9 +30,9 @@
       </div>
 
     <div class="field">
-      <%= form.label :description %>
+      <p><%= form.label :description %>:ハッシュタグがつけられます</p>
       <%= form.text_area :description, class: "form-control form-description",
-      placeholder: "説明を入力してください。ハッシュタグがつけられます 例: #時計 #tokyo"  %>
+      placeholder: "説明を入力してください。 例: 手作り #時計 #tokyo"  %>
     </div>
     <div class="btns">
       <%= link_to "戻る", posts_path, class: 'btn btn-default back-btn' %>
@@ -45,7 +40,7 @@
     </div>
   <% end %>
   </div>
-</div>
+
 
 <script type="text/javascript">
   $(function() {
