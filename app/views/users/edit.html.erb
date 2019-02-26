@@ -20,7 +20,7 @@
       </div>
 
       <div class="user-image-area col-md3">
-        <% if @user.asset.image.present? %>
+        <% if @user.asset.present? %>
           <%= image_tag(@user.asset.image.url, id: :user_img_prev, size: "150x150",) %>
         <% else %>
           <%= image_tag("noimage.png" ,id: :user_img_prev, size: "150x150") %>
@@ -60,7 +60,7 @@
       </div>
 
       <div class="btns">
-        <%= link_to "戻る", posts_path, class: 'btn btn-default back-btn' %>
+        <%= link_to "もどる", posts_path, class: 'btn btn-default back-btn' %>
         <button class="btn btn-primary user-submit-btn" type="submit">保存する</button>
       </div>
 

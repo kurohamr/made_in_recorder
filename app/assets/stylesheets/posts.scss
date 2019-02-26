@@ -23,6 +23,10 @@
   margin-right: 25px;
 }
 
+.post-index-title {
+  margin: 20px 0 25px 20px;
+}
+
 #image_prev {
   float: right;
 }
@@ -39,7 +43,7 @@
   background-color: white;
   border-radius: 3px;
   margin-top: 30px;
-  padding-bottom: 5px;
+  padding: 20px 15px;
 }
 
 .post-area strong, .post-area p {
@@ -50,11 +54,13 @@
 
 .post-thing-area {
   margin-top: 10px;
+  padding-left: 30px
   // border: solid;
 }
 
 .post-place-area {
   margin-top: 10px;
+  padding-left: 30px;
   // border: solid;
 
 }
@@ -76,6 +82,35 @@
   // margin-top: 20px;
 }
 
+.post-action-btns {
+  margin-top: 30px;
+}
+
 .post-action-btns .btn {
-  margin-left: 5px;
+  margin-left: 0;
+}
+
+.post-index-area {
+  background-color: white;
+  padding-left: 0;
+  padding-top: 15px;
+  padding-right: 15px;
+  border-radius: 3px;
+}
+
+#post-image-index {
+  // width: 250px;
+  // height: 250px;
+  border-radius: 3px;
+  border: solid;
+  border-width: thin;
+  border-color: #f3f3f3;
+}
+
+.index-image-area {
+  padding-right: 0;
+}
+
+.img-responsive {
+  min-width: 100% ;
 }

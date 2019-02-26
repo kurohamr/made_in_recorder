@@ -68,9 +68,10 @@ body {
   // position: absolute;
 }
 
+
 .alert {
-  margin-top: 2px;
-   width: 200px;
+  margin: 10px 1px;
+  width: 200px;
 }
 
 .btn {
@@ -81,5 +82,5 @@ body {
 strong, p, h1, h2, h3, h4 {
   font-size: 1.2em;
   letter-spacing: .1em;
-  // line-height: 1.65;
+  line-height: 1.65;
 }
