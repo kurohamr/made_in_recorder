@@ -30,7 +30,7 @@ class User < ApplicationRecord
 
   def get_image_request(image_name)
       begin
-        return open(Rails.env == 'production' ? "" : "http://localhost:3000/assets/#{image_name}")
+        return open(Rails.env == 'production' ? "evening-meadow-31702.herokuapp.com" : "http://localhost:3000/assets/#{image_name}")
       rescue => e
         return open("https://raw.githubusercontent.com/legopo/made_in_recorder/master/app/assets/images/noimage-300x267.png")
       end
