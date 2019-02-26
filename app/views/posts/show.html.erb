@@ -19,6 +19,7 @@
     </div>
     <div class="post-action-btns col-md-3 col-md-offset-1 col-sm-3 col-sm-offset-1">
       <%= link_to '編集', edit_post_path(@post), class: "btn btn-default" %>
+      <%= link_to '削除', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
       <%= link_to 'もどる', posts_path, class: "btn btn-default" %>
     </div>
   </div>
