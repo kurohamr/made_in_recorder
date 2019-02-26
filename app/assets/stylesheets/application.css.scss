@@ -1,0 +1,86 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+@import "reset";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "reset-bootstrap";
+@import "background";
+@import "./posts";
+@import "./users";
+// @import "./animation";
+
+html {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #f4f4f4;
+}
+
+.header {
+  background-color: #fff;
+  border-radius: 3px;
+  border: 1px solid #e6e6e6;
+  height: 60px;
+  left:0;
+  position: sticky;
+  top:0;
+  width:100%;
+  z-index:24;
+}
+
+
+.header i {
+  padding-top: 17px;
+  font-size: 1.4rem;
+  padding-left: 20px;
+  color: #7d7d7d;
+}
+
+.header p {
+  padding-right: 12px;
+  list-style: none;
+  position: absolute;
+}
+
+.header li {
+  float: right;
+  padding-right: 12px;
+  list-style: none;
+  // position: absolute;
+}
+
+
+.alert {
+  margin: 10px 1px;
+  width: 200px;
+}
+
+.btn {
+  font-weight: bold;
+  letter-spacing: .1em;
+}
+
+strong, p, h1, h2, h3, h4 {
+  font-size: 1.2em;
+  letter-spacing: .1em;
+  line-height: 1.65;
+}

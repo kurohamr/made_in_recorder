@@ -1,3 +1,72 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.sign_in_menu {
+  // width:50%;
+}
+
+
+.user-form-area {
+  background-color: white !important;
+  border-radius: 3px;
+}
+
+.edit-user-title {
+  // font-family: fantasy;
+  // line-height: 1.5;
+  padding-top: 20px;
+}
+
+// .edit_user_btn {
+  // float: right;
+// }
+
+#user_img_prev {
+  -webkit-border-radius: 75px;
+  -moz-border-radius: 75px;
+   border-radius: 75px;
+}
+
+#user_profile_image {
+  -webkit-border-radius: 75px;
+  -moz-border-radius: 75px;
+   border-radius: 75px;
+}
+
+.user-submit-btn {
+  float: right;
+  margin-bottom: 30px;
+  margin-right: 15px;
+}
+
+.back-btn {
+  float: right;
+  margin-right: 15px;
+}
+
+.user-name {
+  font-weight: bold;
+  margin: 25px;
+  font-size: 2.2em
+}
+
+.introduction {
+  min-height: 150px;
+  line-height: 1.5;
+  // font-family: 'Verdana';
+  // text-align: center;
+  // letter-spacing: 0.2em;
+}
+
+.place-space {
+  margin-top: 25px;
+}
+
+.user-show {
+  background-color: white;
+}
+
+.edit-user-btn {
+  margin-top: 40px;
+}
+
+.sign_in_menu p {
+  width: 80%;
+}

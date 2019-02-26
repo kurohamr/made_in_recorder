@@ -17,12 +17,10 @@ before_action :check_edit_right, only: [:edit, :update, :destroy]#,:show]
     if user_params[:asset]
       @user.build_asset(user_params[:asset])
       @user.build_asset.image = user_params[:asset][:image]
-    else
-      # set_default_image
     end
     @user.attributes = (user_params.permit(:name, :introduction, :place, :latitude, :longitude, :email, :password, :password_confirmation))
     if @user.save
-      redirect_to user_path(@user.id), notice: 'user updated!'
+      redirect_to user_path(@user.id), notice: '編集されました'
     else
       render 'edit'
     end

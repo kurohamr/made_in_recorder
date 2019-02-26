@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :check_correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @posts = Post.all.where(user_id: current_user.id)
+    @posts = Post.all.where(user_id: current_user.id).includes(:asset)
     #allじゃなくする
   end
 
@@ -18,11 +18,11 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = current_user
     @post.build_asset()
-    if params[:post][:asset_attributes]
+    if params[:post][:asset_attributes][:image]
       @post.asset.image = params[:post][:asset_attributes][:image].tempfile
     else
-      render 'new'
       flash[:notice] = "画像がありません"
+      render 'new'
       return
     end
     if @post.save
@@ -51,7 +51,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to post_path(@post.id), notice: 'post updated!'
+      redirect_to post_path(@post.id), notice: '更新しました'
     else
       render 'edit'
     end
