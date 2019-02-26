@@ -131,17 +131,30 @@ class Seeder
  #   end
  # end
 
- def open_image(limit=12)
-   raise "the number of Image limit is more than the number of existing images " if limit > 12 # Dir.open(Rails.root.join(‘db’, ‘seed_file’)).length
-   base_url = "https://raw.githubusercontent.com/legopo/made_in_recorder/%2338/db/seed_file/test"
-   extend_name = ".jpg"
-   files = []
-   limit.times do |n|
+#  def open_image(limit=12)
+#    raise "the number of Image limit is more than the number of existing images " if limit > 12 # Dir.open(Rails.root.join(‘db’, ‘seed_file’)).length
+#    base_url = "https://raw.githubusercontent.com/legopo/made_in_recorder/%2338/db/seed_file/test"
+#    extend_name = ".jpg"
+#    files = []
+#    limit.times do |n|
+# files.push(open(base_url + (n % 12).to_s + extend_name))
+#    end
+#    return files
+#  end
+# end
+
+def open_image(limit=12)
+  raise "the number of Image limit is more than the number of existing images " if limit > 12 # Dir.open(Rails.root.join(‘db’, ‘seed_file’)).length
+  base_url = "#{Rails.root}/db/seed_file/test"
+  extend_name = ".jpg"
+  files = []
+  limit.times do |n|
 files.push(open(base_url + (n % 12).to_s + extend_name))
-   end
-   return files
- end
+  end
+  return files
 end
+end
+
 
 Seeder.new(
  5,
