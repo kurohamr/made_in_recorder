@@ -49,16 +49,6 @@
         <%= user_form.email_field :email, class: "form-control", placeholder: "メールアドレスを入力してください" %>
       </div>
 
-      <div class="field col-md-6">
-        <%= user_form.label :password %>
-        <%= user_form.password_field :password, class: "form-control" %>
-      </div>
-
-      <div class="field col-md-6">
-        <%= user_form.label :password_confirmation %>
-        <%= user_form.password_field :password_confirmation, class: "form-control" %>
-      </div>
-
       <div class="btns">
         <%= link_to "もどる", posts_path, class: 'btn btn-default back-btn' %>
         <button class="btn btn-primary user-submit-btn" type="submit">保存する</button>

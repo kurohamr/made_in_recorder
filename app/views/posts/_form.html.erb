@@ -1,5 +1,15 @@
 <%= form_with(model: @post, local: true, url: choose_new_or_edit, class: "form-area col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1", html: { style: 'margin-top:30px;' }) do |form| %>
   <div class="row">
+    <% if @post.errors.any? %>
+      <div id="error_explanation">
+      <h2><%= @post.errors.count %>件のエラーがあります</h2>
+      <ul>
+        <% @post.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+  </div>
+<% end %>
     <% if action_name == 'new' %>
       <h2 class="post-form-title">投稿作成</h2>
     <% elsif action_name == 'edit' %>
