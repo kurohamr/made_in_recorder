@@ -86,3 +86,9 @@ strong, p, h1, h2, h3, h4 {
   letter-spacing: .1em;
   line-height: 1.65;
 }
+
+.container {
+  height: 100%;
+  position: relative;
+  overflow: auto;
+}
