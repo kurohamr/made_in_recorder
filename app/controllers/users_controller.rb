@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 before_action :authenticate_user!, only: [:show, :edit, :update]#,:destroy]
 before_action :set_user, only: [:show, :edit, :update, :destroy]
-before_action :check_edit_right, only: [:edit, :update, :destroy]#,:show]
+before_action :check_right_user, only: [:edit, :update, :destroy,:show]
 
   def show
     @hash = Gmaps4rails.build_markers(@user) do |user, marker|
@@ -60,7 +60,7 @@ before_action :check_edit_right, only: [:edit, :update, :destroy]#,:show]
     )
   end
 
-  def check_edit_right
+  def check_right_user
     if user_signed_in? && current_user.id != @user.id
         flash[:notice] = "権限がありません"
         redirect_to(posts_path)

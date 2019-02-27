@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :hashtags, :new, :create, :edit, :update, :destroy]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :check_correct_user, only: [:edit, :update, :destroy]
+  before_action :check_correct_user, only: [:edit, :update, :destroy, :show]
 
   def index
     @posts = current_user.posts.includes(:asset)
