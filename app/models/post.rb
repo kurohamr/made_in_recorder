@@ -7,13 +7,15 @@ class Post < ApplicationRecord
   # accepts_nested_attributes_for :address, allow_destroy: true
   accepts_nested_attributes_for :asset, allow_destroy: true
 
+  before_create :image_validation
+  # before_update :image_validation
   validates :place, presence: true, length: { maximum: 50 }
   validates :thing, presence: true, length: { maximum: 50 }
   validates :description, length: { maximum: 200 }
   validates :latitude, presence: true
   validates :longitude, presence: true
   validates :user_id, presence: true
-  validates :asset, presence: true
+  # validates :asset, presence: true
 
   geocoded_by :place
   after_validation :geocode
@@ -34,6 +36,15 @@ class Post < ApplicationRecord
     tags.uniq.map do |tag|
       tag = Tag.find_or_create_by(name: tag.downcase.delete('#'))
       post.tags << tag
+    end
+  end
+
+  private
+
+  def image_validation
+    if self.asset.image.blank?
+      errors.add "画像", 'が非表示です'
+      throw :abort
     end
   end
 end
