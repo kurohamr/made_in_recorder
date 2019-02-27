@@ -1,22 +1,30 @@
+// .background {
+//   width: 100vw; //view width ブラウザの横幅のナンパーセント
+//   height: 100vh; //view height ブラウザの横幅のナンパーセント
+//   position: relative;
+//   &__image {
+//     width: 100vw;
+//     height: 100vh;
+//     position: relative;
+//     background-size:cover;
+//     background-attachment: fixed;
+//     &__filter {
+//       width: 100vw;
+//       height: 100vh;
+//       position: absolute;
+//       top: 0;
+//       left: 0;
+//       background-color: rgba(0, 0, 0, 0.4)
+//     }
+//   }
+// }
+
 .background {
-  width: 100vw; //view width ブラウザの横幅のナンパーセント
-  height: 100vh; //view height ブラウザの横幅のナンパーセント
-  position: relative;
-  &__image {
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-    background-size:cover;
-    background-attachment: fixed;
-    &__filter {
-      width: 100vw;
-      height: 100vh;
-      position: absolute;
-      top: 0;
-      left: 0;
-      background-color: rgba(0, 0, 0, 0.4)
-    }
-  }
+  background-image:image-url("map3.jpg");
+  background-size:cover;
+  background-attachment: fixed;
+  height:100vh;
+  width: 100vw;
 }
 
 #above_content_signin {
