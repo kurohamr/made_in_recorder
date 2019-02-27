@@ -26,6 +26,7 @@ html {
   height: 100%;
   width: 100%;
   font-size: 100%;
+  position: relative;
 }
 
 body {
@@ -33,6 +34,7 @@ body {
   height: 100%;
   width: 100%;
   background-color: #f4f4f4;
+  position: relative;
 }
 
 .header {
@@ -68,10 +70,10 @@ body {
   // position: absolute;
 }
 
-
 .alert {
   margin: 10px 1px;
   width: 200px;
+  text-align: center;
 }
 
 .btn {
@@ -79,8 +81,58 @@ body {
   letter-spacing: .1em;
 }
 
-strong, p, h1, h2, h3, h4 {
+strong, p, h2, h3, h4 {
   font-size: 1.2em;
   letter-spacing: .1em;
   line-height: 1.65;
+}
+
+#signup_title {
+  font-size: 2.5em;
+}
+
+.container {
+  height: 100%;
+  position: relative;
+  overflow: auto;
+}
+
+.user-show-background {
+  height: 100%;
+  position: relative;
+  overflow: auto;
+  background-color: white;
+}
+
+#title_image {
+  margin-left: 10px;
+  margin-top: 3px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+#page_top{
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  opacity: 0.6;
+  margin: 0 15px 15px 0;
+}
+
+#page_top a{
+  width: 60px;
+  height: 60px;
+  text-decoration: none;
+}
+
+#page_top a::before{
+  font-family: FontAwesome;
+  content: '\f139';
+  font-size: 60px;
+  color: #b9b9b9;
 }

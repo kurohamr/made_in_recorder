@@ -8,6 +8,10 @@
   border-radius: 3px;
 }
 
+.user-image-area {
+  margin: 30px 0 0 30px;
+}
+
 .edit-user-title {
   // font-family: fantasy;
   // line-height: 1.5;
@@ -69,4 +73,8 @@
 
 .sign_in_menu p {
   width: 80%;
+}
+
+.render-signup, .render-signin {
+  margin-bottom:30px;
 }

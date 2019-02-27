@@ -1,7 +1,7 @@
 <h1 class="post-index-title"><%= current_user.name %>'s posts</h1>
-
+<% if current_user.posts.first.present? %>
   <div class="row">
-    <div class="post-index-area col-md-9 col-md-offset-1">
+    <div class="post-index-area col-md-10 col-md-offset-1">
       <div class="row">
         <% @posts.where(user_id: current_user.id).each do |post| %>
           <%= link_to post_path(post.id) do %>
@@ -11,6 +11,12 @@
       </div>
     </div>
   </div>
+<% else %>
+  <div class="no-post">
+    <p>投稿がありません</p>
+  </div>
+<% end %>
+<div id="page_top"><a href="#"></a></div>
 
 
 

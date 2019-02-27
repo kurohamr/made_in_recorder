@@ -16,9 +16,9 @@ class User < ApplicationRecord
   validates :place, presence: true, length: { maximum: 50 }, on: :update
   validates :latitude, presence: true
   validates :longitude, presence: true
-  validates :email, presence: true, uniqueness: true,
-                    format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
-  validates :password, presence: true, length: { in: 6..30 }
+  # validates :email, presence: true, uniqueness: true,
+  #                   format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+  # validates :password, presence: true, length: { in: 6..30 }
 
   geocoded_by :place
   after_validation :geocode
@@ -34,5 +34,18 @@ class User < ApplicationRecord
       rescue => e
         return open("https://raw.githubusercontent.com/legopo/made_in_recorder/master/app/assets/images/noimage.png")
       end
+  end
+
+  def update_without_current_password(params, *options)
+    params.delete(:current_password)
+
+    if params[:password].blank? && params[:password_confirmation].blank?
+      params.delete(:password)
+      params.delete(:password_confirmation)
+    end
+
+    result = update_attributes(params, *options)
+    clean_up_passwords
+    result
   end
 end

@@ -17,14 +17,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = current_user
-    @post.build_asset()
-    if params[:post][:asset_attributes][:image]
-      @post.asset.image = params[:post][:asset_attributes][:image].tempfile
-    else
-      flash[:notice] = "画像がありません"
-      render 'new'
-      return
-    end
+    @post.build_asset(image: params[:post][:asset_attributes][:image].tempfile)  if params[:post][:asset_attributes][:image]
     if @post.save
       redirect_to post_path(@post.id)
     else
