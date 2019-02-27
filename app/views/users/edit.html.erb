@@ -1,17 +1,16 @@
-<% if @user.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= @user.errors.count %><%= t('view.errors_count') %></h2>
-    <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-
 <div class="row form-row">
   <%= form_with(model: @user, local: true, url: user_path, method: :put, class: "user-form-area col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1", html: { style: 'margin-top:30px;' }) do |user_form| %>
     <div class="row">
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= @user.errors.count %><%= t('view.errors_count') %></h2>
+          <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
       <h2 class="edit-user-title">ユーザー編集</h2>
 
       <div class="field col-md-6">
