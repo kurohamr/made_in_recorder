@@ -20,11 +20,11 @@ before_action :check_edit_right, only: [:edit, :update, :destroy]#,:show]
     end
     @user.attributes = (user_params.permit(:name, :introduction, :place, :latitude, :longitude, :email, :password, :password_confirmation))
     if @user.save
+      sign_in(@user, bypass: true)
       redirect_to user_path(@user.id), notice: '編集されました'
     else
       render 'edit'
     end
-    sign_in(@user, bypass: true)
   end
 
   # def destroy; end
