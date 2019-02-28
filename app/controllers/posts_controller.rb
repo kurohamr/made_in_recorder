@@ -5,7 +5,6 @@ class PostsController < ApplicationController
 
   def index
     @posts = current_user.posts.includes(:asset)
-    #allじゃなくする
   end
 
   def new
@@ -83,8 +82,4 @@ class PostsController < ApplicationController
         redirect_to(posts_path)
     end
   end
-  # def set_default_image(post)
-  #   post.asset.image =  Pathname.new("#{Rails.public_path}/noimage.jpg").open if post.asset.image.nil?
-  #   return post
-  # end
 end

@@ -47,17 +47,7 @@ before_action :check_right_user, only: [:edit, :update, :destroy,:show]
       :password_confirmation,
       asset: [
         :image
-      ],
-      # address:  [
-      #   :country,
-      #   :state,
-      #   :city,
-      #   :address1,
-      #   :address2,
-      #   :address3,
-      #   :postcode
-      # ]
-    )
+      ])
   end
 
   def check_right_user
@@ -66,9 +56,4 @@ before_action :check_right_user, only: [:edit, :update, :destroy,:show]
         redirect_to(posts_path)
     end
   end
-
-  # def set_default_image(user)
-  #   user.asset.image =  Pathname.new("#{Rails.public_path}/noimage.jpg").open if user.asset.image.nil?
-  #   return user
-  # end
 end
