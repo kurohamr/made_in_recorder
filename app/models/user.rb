@@ -1,13 +1,9 @@
-# require require 'net/http'
-# require 'uri'
-# require 'json'
 require 'open-uri'
 
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable #, :confirmable
+         :recoverable, :rememberable, :validatable
 
-  # has_one :address, as: :addressable, dependent: :destroy
   has_one :asset, as: :assetable, dependent: :destroy
   has_many :posts, dependent: :destroy
 
@@ -16,9 +12,6 @@ class User < ApplicationRecord
   validates :place, presence: true, length: { maximum: 50 }, on: :update
   validates :latitude, presence: true
   validates :longitude, presence: true
-  # validates :email, presence: true, uniqueness: true,
-  #                   format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
-  # validates :password, presence: true, length: { in: 6..30 }
 
   geocoded_by :place
   after_validation :geocode
