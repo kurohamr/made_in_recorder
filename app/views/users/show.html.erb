@@ -2,8 +2,8 @@
   <div class="user-profile col-md-8 col-md-offset-2">
     <div class="row">
       <h3 class="user-name col-md-4 col-sm-5"><%= @user.name %></h3>
+      <%= link_to '登録情報編集', edit_user_registration_path, class: 'btn btn-default edit-password-btn col-md-3 col-sm-3' %>
       <%= link_to "プロフィール編集", edit_user_path(id: @user), class: 'btn btn-default edit-user-btn col-md-3 col-sm-3' %>
-      <%= link_to 'ユーザー情報変更', edit_user_registration_path, class: 'btn btn-default edit-password-btn col-md-3 col-sm-3' %>
     </div>
     <div class="row">
       <div class="profile-image-area col-md-3 col-sm-3">
@@ -16,7 +16,6 @@
       <p class="place-space col-md-10">あなたの位置: <%= @user.place %></p>
 
       <div id="map" class="col-md-12"style=" height: 400px;"></div>
-      <!-- <div id="map" style="width: 660px; height: 400px;"></div> -->
 
   </div>
 </div>
