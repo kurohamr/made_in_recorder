@@ -1,3 +1,7 @@
+.user-profile {
+  margin-bottom: 30px;
+}
+
 .sign_in_menu {
   // width:50%;
 }
@@ -11,16 +15,6 @@
 .user-image-area {
   margin: 30px 0 0 30px;
 }
-
-.edit-user-title {
-  // font-family: fantasy;
-  // line-height: 1.5;
-  // padding-top: 20px;
-}
-
-// .edit_user_btn {
-  // float: right;
-// }
 
 #user_img_prev {
   -webkit-border-radius: 75px;
@@ -47,16 +41,14 @@
 
 .user-name {
   font-weight: bold;
-  margin: 25px;
+  margin: 25px 25px 25px 0;
   font-size: 2.2em
 }
 
 .introduction {
   min-height: 150px;
   line-height: 1.5;
-  // font-family: 'Verdana';
-  // text-align: center;
-  // letter-spacing: 0.2em;
+  width: 600px;
 }
 
 .place-space {
@@ -67,8 +59,10 @@
   background-color: white;
 }
 
-.edit-user-btn {
+.edit-user-btn, .edit-password-btn {
   margin-top: 40px;
+  margin-right: 5px;
+  width: 180px;
 }
 
 .sign_in_menu p {

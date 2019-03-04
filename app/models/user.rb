@@ -1,11 +1,18 @@
 require 'open-uri'
 
 class User < ApplicationRecord
+  attr_accessor :current_password
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
   has_one :asset, as: :assetable, dependent: :destroy
   has_many :posts, dependent: :destroy
+
+  before_validation do
+    self.build_asset() if self.asset.nil?
+    self.asset.image =  get_image_request("noimage.png") if self.asset.image.nil? || self.asset.image.url.nil?
+  end
 
   validates :name, presence: true, length: { in: 1..20 }
   validates :introduction, length: { maximum: 200 }
@@ -15,11 +22,6 @@ class User < ApplicationRecord
 
   geocoded_by :place
   after_validation :geocode
-
-  before_validation do
-    self.build_asset() if self.asset.nil?
-    self.asset.image =  get_image_request("noimage.png") if self.asset.image.nil? || self.asset.image.url.nil?
-  end
 
   def get_image_request(image_name)
       begin
