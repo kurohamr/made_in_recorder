@@ -1,3 +1,7 @@
+.user-profile {
+  margin-bottom: 30px;
+}
+
 .sign_in_menu {
   // width:50%;
 }
@@ -6,21 +10,12 @@
   background-color: white !important;
   border-radius: 3px;
   padding-bottom: 30px;
+  margin-top:30px;
 }
 
 .user-image-area {
   margin: 30px 0 0 30px;
 }
-
-.edit-user-title {
-  // font-family: fantasy;
-  // line-height: 1.5;
-  // padding-top: 20px;
-}
-
-// .edit_user_btn {
-  // float: right;
-// }
 
 #user_img_prev {
   -webkit-border-radius: 75px;
@@ -47,16 +42,14 @@
 
 .user-name {
   font-weight: bold;
-  margin: 25px;
+  margin: 25px 25px 25px 0;
   font-size: 2.2em
 }
 
 .introduction {
   min-height: 150px;
   line-height: 1.5;
-  // font-family: 'Verdana';
-  // text-align: center;
-  // letter-spacing: 0.2em;
+  width: 600px;
 }
 
 .place-space {
@@ -67,8 +60,11 @@
   background-color: white;
 }
 
-.edit-user-btn {
+.edit-user-btn, .edit-password-btn {
   margin-top: 40px;
+  margin-right: 5px;
+  width: 180px;
+  float: right;
 }
 
 .sign_in_menu p {
@@ -77,4 +73,32 @@
 
 .render-signup, .render-signin {
   margin-bottom:30px;
+}
+
+.user-registration-edit {
+  background-color: white;
+  margin-top: 30px;
+  border-radius: 3px;
+  padding-bottom: 30px;
+  position: relative;
+}
+
+.user-registration-edit-btns {
+  float: right;
+  margin-right: 30px;
+  margin-top: 35px;
+}
+
+.user-registration-submit-btn {
+  margin-right: 13px;
+}
+
+.user-delete-area {
+  background-color: white;
+  border-radius: 3px;
+  padding-bottom: 30px;
+}
+
+.user-delete {
+  text-align: center;
 }

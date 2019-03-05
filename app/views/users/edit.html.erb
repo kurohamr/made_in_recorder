@@ -1,5 +1,5 @@
 <div class="row form-row">
-  <%= form_with(model: @user, local: true, url: user_path, method: :put, class: "user-form-area col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1", html: { style: 'margin-top:30px;' }) do |user_form| %>
+  <%= form_with(model: @user, local: true, url: user_path, method: :put, class: "user-form-area col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1") do |user_form| %>
     <div class="row">
       <% if @user.errors.any? %>
         <div id="error_explanation">
