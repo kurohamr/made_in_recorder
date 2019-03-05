@@ -60,7 +60,12 @@ class PostsController < ApplicationController
 
   private
   def set_post
+      # @post = current_user.posts.find(params[:id])
+    if params[:post_id]
+      @post = current_user.posts.find(params[:post_id])
+    else
       @post = current_user.posts.find(params[:id])
+    end
   end
 
   def post_params
