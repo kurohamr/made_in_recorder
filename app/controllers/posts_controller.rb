@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     @post.user = current_user
     @post.build_asset(image: params[:post][:asset_attributes][:image].tempfile)  if params[:post][:asset_attributes][:image]
     if @post.save
-      redirect_to post_path(@post.id)
+      redirect_to post_path(@post.id), notice: '投稿されました'
     else
       render 'new'
     end
@@ -43,7 +43,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to post_path(@post.id), notice: '更新しました'
+      redirect_to post_path(@post.id), notice: '更新されました'
     else
       render 'edit'
     end
