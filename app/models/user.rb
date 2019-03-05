@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   has_one :asset, as: :assetable, dependent: :destroy
   has_many :posts, dependent: :destroy
+  has_many :favorites
+  has_many :favarite_posts, through: :favorites, source: :post
 
   before_validation do
     self.build_asset() if self.asset.nil?
@@ -42,5 +44,14 @@ class User < ApplicationRecord
     result = update_attributes(params, *options)
     clean_up_passwords
     result
+  end
+
+  def like(post)
+    favorites.find_or_create_by(post_id: post.id)
+  end
+
+  def unlike(post)
+    favorite = favorites.find_by(post_id: post.id)
+    favorite.destroy if favorite
   end
 end
