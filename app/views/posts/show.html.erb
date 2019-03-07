@@ -23,11 +23,9 @@
       <%= link_to 'もどる', posts_path, class: "btn btn-default" %>
     </div>
 
-    <% if @favorite.present? %>
-      <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
-    <% else %>
-      <%= link_to 'お気に入りする', favorites_path(post_id: @post.id), method: :post, class: 'btn btn-primary' %>
-    <% end %>
+    <div id="favorite_btn_<%= @post.id %>">
+      <%= render 'favorites/favorite', post: @post %>
+    </div>
   </div>
 </div>
 
