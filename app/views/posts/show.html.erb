@@ -17,15 +17,17 @@
       <strong>説明:</strong>
       <p><%= render_with_hashtags(@post.description) %></p>
     </div>
+
     <div class="post-action-btns col-md-3 col-md-offset-1 col-sm-3 col-sm-offset-1">
+      <div class="aaa">
+        <div class="create-time"><p><%= l @post.created_at, format: :date %></p></div>
+        <div class="fav-btn" id="favorite_btn_<%= @post.id %>"><%= render 'favorites/favorite', post: @post %></div>
+      </div>
       <%= link_to '編集', edit_post_path(@post), class: "btn btn-default" %>
       <%= link_to '削除', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
       <%= link_to 'もどる', posts_path, class: "btn btn-default" %>
     </div>
 
-    <div id="favorite_btn_<%= @post.id %>">
-      <%= render 'favorites/favorite', post: @post %>
-    </div>
   </div>
 </div>
 

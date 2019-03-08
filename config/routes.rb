@@ -14,9 +14,11 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:edit, :update, :destroy, :show] #,:index]
-  resources :posts
+  resources :posts do
+    resources :favorites, only: [:create, :destroy]
+  end
+
   get '/posts/hashtag/:name', to:'posts#hashtags'
-  resources :favorites, only: [:create, :destroy]
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

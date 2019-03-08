@@ -63,13 +63,13 @@ $fade-in-animation-delay: 0.03s;
     transform: scale(0);
     opacity: 0;
 }
-@each $theme-key in $themes-key {
-  .ripple__effect.is-color-#{$theme-key} {
-    @include themify($themes) {
-      background: themed($theme-key);
-    }
-  }
-}
+// @each $theme-key in $themes-key {
+//   .ripple__effect.is-color-#{$theme-key} {
+//     @include themify($themes) {
+//       background: themed($theme-key);
+//     }
+//   }
+// }
 .ripple__effect.is-show {
     animation: ripple $fade-in-animation-length ease-out;
 }
