@@ -114,8 +114,6 @@
 }
 
 #post-image-index {
-  // width: 250px;
-  // height: 250px;
   border-radius: 3px;
   border: solid;
   border-width: thin;
@@ -128,4 +126,13 @@
 
 .img-responsive {
   min-width: 100% ;
+}
+
+.aaa {
+  display: flex;
+}
+
+.aaa .fav-btn {
+  padding-top: 3px;
+  margin-left: 15px;
 }
