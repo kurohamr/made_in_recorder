@@ -11,12 +11,41 @@
           <p><%= image_tag(@user.asset.image.url, size: "150x150", id: :user_profile_image) %></p>
         <% end %>
       </div>
-    <p class="introduction col-md-6 col-md-offset-1 col-sm-6"><%= @user.introduction %></p>
+      <p class="introduction col-md-6 col-md-offset-1 col-sm-6"><%= @user.introduction %></p>
     </div>
-      <p class="place-space col-md-10">あなたの位置: <%= @user.place %></p>
-
+      <p class="place-space">あなたの位置: <%= @user.place %></p>
       <div id="map" class="col-md-12"style=" height: 400px;"></div>
+  </div>
+</div>
+<div class="row">
+  <ul class="nav nav-tabs user-show-tab col-md-8 col-md-offset-2">
+    <li class="nav-item">
+      <a href="#tab1" class="nav-link" data-toggle="tab">お気に入り一覧</a>
+    </li>
+    <li class="nav-item">
+      <a href="#tab2" class="nav-link" data-toggle="tab">ハッシュタグ一覧</a>
+    </li>
+  </ul>
 
+  <div class="tab-content col-md-8 col-md-offset-2">
+    <div id="tab1" class="tab-pane active">
+      <div class="row">
+        <% @posts.each do |post| %>
+          <p class="index-image-area col-md-3 col-md-offset-0 col-sm-6">
+            <%= link_to post_path(post.id) do %>
+              <%= image_tag(post.asset.image.url, class: "img-responsive", id: "post-image-index") %>
+            <% end %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+    <div id="tab2" class="tab-pane">
+      <div class="">
+        <% @tags.each do |tag| %>
+          <p><%= tag.name %></p>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 
