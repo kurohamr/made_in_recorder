@@ -1,5 +1,7 @@
 require 'open-uri'
 
+
+
 class User < ApplicationRecord
   attr_accessor :current_password
 
@@ -9,7 +11,7 @@ class User < ApplicationRecord
   has_one :asset, as: :assetable, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :favorites
-  has_many :favarite_posts, through: :favorites, source: :post
+  has_many :favorite_posts, through: :favorites, source: :post
 
   before_validation do
     self.build_asset() if self.asset.nil?
@@ -54,4 +56,14 @@ class User < ApplicationRecord
     favorite = favorites.find_by(post_id: post.id)
     favorite.destroy if favorite
   end
+
+  def tags
+    return self.posts
+        .select{|post| post.tags.length > 0}
+        .map{|post| post.tags}
+        .flatten
+        .uniq
+  end
 end
+# frafe = User.new
+# afeaf.posts
