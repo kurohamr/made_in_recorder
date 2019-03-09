@@ -28,7 +28,6 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'enum_help'
-gem 'faker'
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
@@ -45,7 +44,12 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'rspec-rails'
+  gem 'spring'
   gem 'spring-commands-rspec'
+  gem "factory_bot_rails"
+  gem 'faker'
+  gem 'capybara', '>= 2.15'
+  gem 'selenium-webdriver'
   gem 'launchy'
   gem 'dotenv-rails'
   gem 'bullet'
@@ -54,14 +58,11 @@ end
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'letter_opener_web'
 end
 
 group :test do
-  gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
   gem 'chromedriver-helper'
 end
 
