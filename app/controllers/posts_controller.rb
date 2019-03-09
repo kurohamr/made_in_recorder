@@ -26,7 +26,7 @@ class PostsController < ApplicationController
 
   def hashtags
     tag = Tag.find_by(name: params[:name])
-    @posts = tag.posts.where(user_id: current_user.id)
+    @posts = tag.posts.where(user_id: current_user.id).includes(:asset)
   end
 
   def show

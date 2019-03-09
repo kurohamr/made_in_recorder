@@ -1,7 +1,5 @@
 require 'open-uri'
 
-
-
 class User < ApplicationRecord
   attr_accessor :current_password
 
@@ -57,8 +55,9 @@ class User < ApplicationRecord
     favorite.destroy if favorite
   end
 
-  def tags
-    return self.posts
+  def tags()
+    self.posts
+        .includes(:tags)
         .select{|post| post.tags.length > 0}
         .map{|post| post.tags}
         .flatten
