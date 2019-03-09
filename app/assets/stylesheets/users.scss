@@ -8,7 +8,7 @@
 
 .user-form-area {
   background-color: white !important;
-  border-radius: 3px;
+  border-radius: 5px;
   padding-bottom: 30px;
   margin-top:30px;
 }
@@ -67,6 +67,18 @@
   float: right;
 }
 
+.user-show-tab {
+  margin-bottom: 5px;
+}
+
+.own_tags {
+  margin-left: 5px;
+}
+
+.own_tags a {
+  text-decoration: none;
+}
+
 .sign_in_menu p {
   width: 80%;
 }
@@ -78,7 +90,7 @@
 .user-registration-edit {
   background-color: white;
   margin-top: 30px;
-  border-radius: 3px;
+  border-radius: 5px;
   padding-bottom: 30px;
   position: relative;
 }
@@ -95,7 +107,7 @@
 
 .user-delete-area {
   background-color: white;
-  border-radius: 3px;
+  border-radius: 5px;
   padding-bottom: 30px;
 }
 

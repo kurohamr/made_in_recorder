@@ -4,23 +4,20 @@
 
 .form-area {
   background-color: white !important;
-  border-radius: 3px;
+  border-radius: 5px;
   magrin-top: 25px;
   padding-bottom: 20px
 }
 
-.no-post {
-  margin-left: 15px;
-}
+// .no-post {
+//   text-align: center;
+//   margin-top: 150px;
+//   font-size: x-large;
+// }
 
 .field {
   padding-top: 10px !important;
 }
-
-// .submit {
-//   float: right;
-//   padding-top: 25px;
-// }
 
 .thing-field{
   margin-top: 0;
@@ -49,7 +46,7 @@
 
 .post-area {
   background-color: white;
-  border-radius: 3px;
+  border-radius: 5px;
   margin-top: 30px;
   padding: 30px 15px;
 }
@@ -78,13 +75,13 @@
 }
 
 #post-image-show {
-  border-radius: 3px;
+  border-radius: 5px;
   width: 400px;
   height: 400px;
 }
 
 .post-show-map {
-  border-radius: 3px;
+  border-radius: 5px;
   width: 400px;
   height: 400px;
   // margin-top: 20px;
@@ -103,8 +100,8 @@
   padding-left: 0;
   padding-top: 15px;
   padding-right: 15px;
-  margin-top: 30px;
-  border-radius: 3px;
+  margin-top: 60px;
+  border-radius: 5px;
 }
 
 .post-form-title {
@@ -117,9 +114,7 @@
 }
 
 #post-image-index {
-  // width: 250px;
-  // height: 250px;
-  border-radius: 3px;
+  border-radius: 5px;
   border: solid;
   border-width: thin;
   border-color: #f3f3f3;
@@ -131,4 +126,13 @@
 
 .img-responsive {
   min-width: 100% ;
+}
+
+.aaa {
+  display: flex;
+}
+
+.aaa .fav-btn {
+  padding-top: 3px;
+  margin-left: 15px;
 }

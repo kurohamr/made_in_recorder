@@ -26,10 +26,11 @@ class PostsController < ApplicationController
 
   def hashtags
     tag = Tag.find_by(name: params[:name])
-    @posts = tag.posts.where(user_id: current_user.id)
+    @posts = tag.posts.where(user_id: current_user.id).includes(:asset)
   end
 
   def show
+    @favorite = current_user.favorites.find_by(post_id: @post.id)
     @hash = Gmaps4rails.build_markers(@post) do |post, marker|
       marker.lat post.latitude
       marker.lng post.longitude
@@ -59,7 +60,12 @@ class PostsController < ApplicationController
 
   private
   def set_post
+      # @post = current_user.posts.find(params[:id])
+    if params[:post_id]
+      @post = current_user.posts.find(params[:post_id])
+    else
       @post = current_user.posts.find(params[:id])
+    end
   end
 
   def post_params

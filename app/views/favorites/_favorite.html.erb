@@ -1,0 +1,10 @@
+<% favorite = current_user.favorites.find_by(post_id: @post.id) %>
+<% if favorite.present? %>
+  <%= link_to post_favorite_path(id: favorite.id, post_id: @post), method: :delete, remote: true do %>
+    <i class="fas fa-star" style="color: yellow;"></i>
+  <% end %>
+<% else %>
+  <%= link_to post_favorites_path(post_id: post.id), method: :post, remote: true do %>
+    <i class="far fa-star"></i>
+  <% end %>
+<% end %>

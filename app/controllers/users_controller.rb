@@ -4,6 +4,8 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
 before_action :check_right_user, only: [:edit, :update, :destroy,:show]
 
   def show
+    @tags = @user.tags()
+    @posts = @user.favorite_posts.includes(:asset)
     @hash = Gmaps4rails.build_markers(@user) do |user, marker|
       marker.lat user.latitude
       marker.lng user.longitude

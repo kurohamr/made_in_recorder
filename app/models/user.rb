@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   has_one :asset, as: :assetable, dependent: :destroy
   has_many :posts, dependent: :destroy
+  has_many :favorites
+  has_many :favorite_posts, through: :favorites, source: :post
 
   before_validation do
     self.build_asset() if self.asset.nil?
@@ -43,4 +45,24 @@ class User < ApplicationRecord
     clean_up_passwords
     result
   end
+
+  def like(post)
+    favorites.find_or_create_by(post_id: post.id)
+  end
+
+  def unlike(post)
+    favorite = favorites.find_by(post_id: post.id)
+    favorite.destroy if favorite
+  end
+
+  def tags()
+    self.posts
+        .includes(:tags)
+        .select{|post| post.tags.length > 0}
+        .map{|post| post.tags}
+        .flatten
+        .uniq
+  end
 end
+# frafe = User.new
+# afeaf.posts

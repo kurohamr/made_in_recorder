@@ -3,22 +3,18 @@
     <div class="post-index-area col-md-10 col-md-offset-1">
       <div class="row">
         <% @posts.where(user_id: current_user.id).each do |post| %>
-          <%= link_to post_path(post.id) do %>
-            <p class="index-image-area col-md-3 col-md-offset-0 col-sm-6"><%= image_tag(post.asset.image.url, class: "img-responsive", id: "post-image-index") %></p>
-          <% end %>
+          <p class="index-image-area col-md-3 col-md-offset-0 col-sm-6">
+            <%= link_to post_path(post.id) do %>
+              <%= image_tag(post.asset.image.url, class: "img-responsive", id: "post-image-index") %>
+            <% end %>
+          </p>
         <% end %>
       </div>
     </div>
   </div>
 <% else %>
-  <div class="no-post">
-    <p>投稿がありません</p>
-  </div>
+  <!-- <div class="no-post">
+    <p>投稿しましょう！</p>
+  </div> -->
 <% end %>
 <div id="page_top"><a href="#"></a></div>
-
-
-
-<!-- "img-responsive"
-
-            <p class="index-image-area col-md-3 col-sm-10 col-sm-offset-1"><%#= image_tag(post.asset.image.url, id: "post-image-index", size: "250x250") %></p> -->

@@ -1,8 +1,9 @@
 class Post < ApplicationRecord
   belongs_to :user
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_users, through: :favorites, source: :user
   has_and_belongs_to_many :tags
   has_one :asset, as: :assetable, dependent: :destroy
-
   accepts_nested_attributes_for :asset, allow_destroy: true
 
   before_save :image_validation
