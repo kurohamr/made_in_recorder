@@ -40,9 +40,9 @@
       </div>
     </div>
     <div id="tab2" class="tab-pane">
-      <div class="">
+      <div class="own_tags">
         <% @tags.each do |tag| %>
-          <p><%= tag.name %></p>
+          <p><%= link_to("##{tag.name}", "/posts/hashtag/#{tag.name}") %></p>
         <% end %>
       </div>
     </div>
