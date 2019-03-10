@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Post, type: :model do
 
-  it "fill in place, caliculate and save latitude and longitude" do
+  it "When set and save place, caliculate and save latitude and longitude" do
     user1 = FactoryBot.create(:user)
     post1 = Post.new(thing: "thing1", place: "London", user: user1)
     image_path = File.join(Rails.root, 'spec/fixtures/test-image.png')

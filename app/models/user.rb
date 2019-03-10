@@ -46,15 +46,6 @@ class User < ApplicationRecord
     result
   end
 
-  def like(post)
-    favorites.find_or_create_by(post_id: post.id)
-  end
-
-  def unlike(post)
-    favorite = favorites.find_by(post_id: post.id)
-    favorite.destroy if favorite
-  end
-
   def tags()
     self.posts
         .includes(:tags)

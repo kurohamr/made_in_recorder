@@ -16,11 +16,13 @@ before_action :check_right_user, only: [:edit, :update, :destroy,:show]
   def edit; end
 
   def update
+    binding.pry
     if user_params[:asset]
       @user.build_asset(user_params[:asset])
       @user.build_asset.image = user_params[:asset][:image]
     end
     @user.attributes = (user_params.permit(:name, :introduction, :place, :latitude, :longitude, :email, :password, :password_confirmation))
+
     if @user.save
       sign_in(@user, bypass: true)
       redirect_to user_path(@user.id), notice: '編集されました'
@@ -28,8 +30,6 @@ before_action :check_right_user, only: [:edit, :update, :destroy,:show]
       render 'edit'
     end
   end
-
-  # def destroy; end
 
   private
 
