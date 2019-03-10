@@ -9,7 +9,6 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    # @post.build_address()
     @post.build_asset()
   end
 
@@ -18,6 +17,7 @@ class PostsController < ApplicationController
     @post.user = current_user
     @post.build_asset(image: params[:post][:asset_attributes][:image].tempfile)  if params[:post][:asset_attributes][:image]
     if @post.save
+      binding.pry
       redirect_to post_path(@post.id), notice: '投稿されました'
     else
       render 'new'
