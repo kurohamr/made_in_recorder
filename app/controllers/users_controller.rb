@@ -16,7 +16,6 @@ before_action :check_right_user, only: [:edit, :update, :destroy,:show]
   def edit; end
 
   def update
-    binding.pry
     if user_params[:asset]
       @user.build_asset(user_params[:asset])
       @user.build_asset.image = user_params[:asset][:image]
