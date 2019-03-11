@@ -39,7 +39,7 @@ class Post < ApplicationRecord
   private
 
   def image_validation
-    if self.asset.image.blank?
+    if self.asset.image.blank? #TODO/blank? empty? nil?
       errors.add "画像", 'がありません'
       throw :abort
     end
