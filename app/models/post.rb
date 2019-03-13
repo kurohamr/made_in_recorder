@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Post < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
@@ -18,8 +20,8 @@ class Post < ApplicationRecord
   after_validation :geocode
 
   after_create do
-    post = Post.find_by(id: self.id)
-    tags  = self.description.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
+    post = Post.find_by(id: id)
+    tags = description.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
     tags.uniq.map do |tag|
       tag = Tag.find_or_create_by(name: tag.downcase.delete('#'))
       post.tags << tag
@@ -27,9 +29,9 @@ class Post < ApplicationRecord
   end
 
   before_update do
-    post = Post.find_by(id: self.id)
+    post = Post.find_by(id: id)
     post.tags.clear
-    tags = self.description.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
+    tags = description.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
     tags.uniq.map do |tag|
       tag = Tag.find_or_create_by(name: tag.downcase.delete('#'))
       post.tags << tag
@@ -39,8 +41,8 @@ class Post < ApplicationRecord
   private
 
   def image_validation
-    if self.asset.image.blank? #TODO/blank? empty? nil?
-      errors.add "画像", 'がありません'
+    if asset.image.blank? # TODO/blank? empty? nil?
+      errors.add '画像', 'がありません'
       throw :abort
     end
   end

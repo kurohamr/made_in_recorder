@@ -1,8 +1,9 @@
-Rails.application.routes.draw do
+# frozen_string_literal: true
 
-  devise_for :users, :controllers => {
+Rails.application.routes.draw do
+  devise_for :users, controllers: {
     registrations: 'users/registrations'
-   }
+  }
   devise_scope :user do
     authenticated :user do
       root 'posts#index', as: :authenticated_root
@@ -13,14 +14,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:edit, :update, :destroy, :show] #,:index]
+  resources :users, only: %i[edit update destroy show] # ,:index]
   resources :posts do
-    resources :favorites, only: [:create, :destroy]
+    resources :favorites, only: %i[create destroy]
   end
 
-  get '/posts/hashtag/:name', to:'posts#hashtags'
+  get '/posts/hashtag/:name', to: 'posts#hashtags'
 
-  if Rails.env.development?
-    mount LetterOpenerWeb::Engine, at: "/letter_opener"
-  end
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end

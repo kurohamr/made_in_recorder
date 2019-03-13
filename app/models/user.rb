@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'open-uri'
 
 class User < ApplicationRecord
@@ -12,8 +14,8 @@ class User < ApplicationRecord
   has_many :favorite_posts, through: :favorites, source: :post
 
   before_validation do
-    self.build_asset() if self.asset.nil?
-    self.asset.image =  get_image_request("noimage.png") if self.asset.image.nil? || self.asset.image.url.nil?
+    build_asset if asset.nil?
+    asset.image = get_image_request('noimage.png') if asset.image.nil? || asset.image.url.nil?
   end
 
   validates :name, presence: true, length: { in: 1..20 }
@@ -26,11 +28,9 @@ class User < ApplicationRecord
   after_validation :geocode
 
   def get_image_request(image_name)
-      begin
-        return open(Rails.env == 'production' ? "evening-meadow-31702.herokuapp.com/assets/#{image_name}" : "http://localhost:3000/assets/#{image_name}")
-      rescue => e
-        return open("https://raw.githubusercontent.com/legopo/made_in_recorder/master/app/assets/images/noimage.png")
-      end
+    open(Rails.env == 'production' ? "evening-meadow-31702.herokuapp.com/assets/#{image_name}" : "http://localhost:3000/assets/#{image_name}")
+  rescue StandardError => e
+    open('https://raw.githubusercontent.com/legopo/made_in_recorder/master/app/assets/images/noimage.png')
   end
 
   def update_without_current_password(params, *options)
@@ -46,13 +46,13 @@ class User < ApplicationRecord
     result
   end
 
-  def tags()
-    self.posts
-        .includes(:tags)
-        .select{|post| post.tags.length > 0}
-        .map{|post| post.tags}
-        .flatten
-        .uniq
+  def tags
+    posts
+      .includes(:tags)
+      .reject { |post| post.tags.empty? }
+      .map(&:tags)
+      .flatten
+      .uniq
   end
 end
 # frafe = User.new

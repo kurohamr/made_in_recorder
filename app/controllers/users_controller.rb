@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-before_action :authenticate_user!, only: [:show, :edit, :update]#,:destroy]
-before_action :set_user, only: [:show, :edit, :update, :destroy]
-before_action :check_right_user, only: [:edit, :update, :destroy,:show]
+  before_action :authenticate_user!, only: %i[show edit update] # ,:destroy]
+  before_action :set_user, only: %i[show edit update destroy]
+  before_action :check_right_user, only: %i[edit update destroy show]
 
   def show
-    @tags = @user.tags()
+    @tags = @user.tags
     @posts = @user.favorite_posts.includes(:asset)
     @hash = Gmaps4rails.build_markers(@user) do |user, marker|
       marker.lat user.latitude
@@ -20,7 +22,7 @@ before_action :check_right_user, only: [:edit, :update, :destroy,:show]
       @user.build_asset(user_params[:asset])
       @user.build_asset.image = user_params[:asset][:image]
     end
-    @user.attributes = (user_params.permit(:name, :introduction, :place, :latitude, :longitude, :email, :password, :password_confirmation))
+    @user.attributes = user_params.permit(:name, :introduction, :place, :latitude, :longitude, :email, :password, :password_confirmation)
 
     if @user.save
       sign_in(@user, bypass: true)
@@ -33,7 +35,7 @@ before_action :check_right_user, only: [:edit, :update, :destroy,:show]
   private
 
   def set_user
-    @user = User.find(params[:id]) #if current_user.present?
+    @user = User.find(params[:id]) # if current_user.present?
   end
 
   def user_params
@@ -48,13 +50,14 @@ before_action :check_right_user, only: [:edit, :update, :destroy,:show]
       :password_confirmation,
       asset: [
         :image
-      ])
+      ]
+    )
   end
 
   def check_right_user
     if user_signed_in? && current_user.id != @user.id
-        flash[:notice] = "権限がありません"
-        redirect_to(posts_path)
+      flash[:notice] = '権限がありません'
+      redirect_to(posts_path)
     end
   end
 end
