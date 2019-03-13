@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-
-  it "When set and save place, caliculate and save latitude and longitude" do
+  it 'When set and save place, caliculate and save latitude and longitude' do
     user1 = FactoryBot.create(:user)
-    post1 = Post.new(thing: "thing1", place: "London", user: user1)
+    post1 = Post.new(thing: 'thing1', place: 'London', user: user1)
     image_path = File.join(Rails.root, 'spec/fixtures/test-image.png')
     post1.build_asset(image: Rack::Test::UploadedFile.new(image_path))
     post1.save
@@ -12,19 +13,19 @@ RSpec.describe Post, type: :model do
     expect(post1.longitude).to eq -0.1276474
   end
 
-  it "run image validation?" do
+  it 'run image validation?' do
     user1 = FactoryBot.create(:user)
-    post1 = Post.new(thing: "thing1", place: "London", user: user1)
+    post1 = Post.new(thing: 'thing1', place: 'London', user: user1)
     post1.build_asset
     pending 'この先エラーを捉えられないのでスキップ'
     # expect{post1.asset.image blank?}.to raise_error 'ArgumentError'
   end
 
-  it "create with correct tags?" do
+  it 'create with correct tags?' do
     user1 = FactoryBot.create(:user)
     post1 = Post.new(
-      thing: "thing1",
-      place: "London",
+      thing: 'thing1',
+      place: 'London',
       user: user1,
       description: 'description #testtag #tagstest'
     )
@@ -36,11 +37,11 @@ RSpec.describe Post, type: :model do
     expect(post1.tags[1].name).to include 'tagstest'
   end
 
-  it "update with correct tags?" do
+  it 'update with correct tags?' do
     user1 = FactoryBot.create(:user)
     post1 = Post.new(
-      thing: "thing1",
-      place: "London",
+      thing: 'thing1',
+      place: 'London',
       user: user1,
       description: 'description #testtag #tagstest'
     )

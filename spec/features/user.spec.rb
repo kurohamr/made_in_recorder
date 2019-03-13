@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.feature "Registration and session", type: :feature do
-
+RSpec.feature 'Registration and session', type: :feature do
   scenario 'sign up' do
     visit unauthenticated_root_path
     fill_in 'user_name', with: 'test_user1'
@@ -24,11 +25,11 @@ RSpec.feature "Registration and session", type: :feature do
   end
 end
 
-RSpec.feature "user general", type: :feature do
+RSpec.feature 'user general', type: :feature do
   before do
     @user = FactoryBot.create(:user)
     login_as(@user, scope: :user)
-    post1 = Post.new(thing: "thing1", place: "London", user: @user, description: 'testtestest #testhashtag')
+    post1 = Post.new(thing: 'thing1', place: 'London', user: @user, description: 'testtestest #testhashtag')
     image_path = File.join(Rails.root, 'spec/fixtures/test-image.png')
     post1.build_asset(image: Rack::Test::UploadedFile.new(image_path))
     post1.save

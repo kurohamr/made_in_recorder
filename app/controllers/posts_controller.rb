@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :hashtags, :new, :create, :edit, :update, :destroy]
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :check_correct_user, only: [:edit, :update, :destroy, :show]
+  before_action :authenticate_user!, only: %i[index hashtags new create edit update destroy]
+  before_action :set_post, only: %i[show edit update destroy]
+  before_action :check_correct_user, only: %i[edit update destroy show]
 
   def index
     @posts = current_user.posts.includes(:asset)
@@ -9,13 +11,13 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @post.build_asset()
+    @post.build_asset
   end
 
   def create
     @post = Post.new(post_params)
     @post.user = current_user
-    @post.build_asset(image: params[:post][:asset_attributes][:image].tempfile)  if params[:post][:asset_attributes][:image]
+    @post.build_asset(image: params[:post][:asset_attributes][:image].tempfile) if params[:post][:asset_attributes][:image]
     if @post.save
       binding.pry
       redirect_to post_path(@post.id), notice: '投稿されました'
@@ -54,18 +56,19 @@ class PostsController < ApplicationController
     if @post.destroy
       redirect_to posts_path, notice: 'post deleted.'
     else
-      #rescue???
+      # rescue???
     end
   end
 
   private
+
   def set_post
-      # @post = current_user.posts.find(params[:id])
-    if params[:post_id]
-      @post = current_user.posts.find(params[:post_id])
-    else
-      @post = current_user.posts.find(params[:id])
-    end
+    # @post = current_user.posts.find(params[:id])
+    @post = if params[:post_id]
+              current_user.posts.find(params[:post_id])
+            else
+              current_user.posts.find(params[:id])
+            end
   end
 
   def post_params
@@ -76,16 +79,17 @@ class PostsController < ApplicationController
       :thing,
       :latitude,
       :longitude,
-        asset_attributes: [
-          :image,
-          :image_cache
-        ],)
+      asset_attributes: %i[
+        image
+        image_cache
+      ]
+    )
   end
 
   def check_correct_user
     if user_signed_in? && current_user.id != @post.user_id
-        flash[:notice] = "権限がありません"
-        redirect_to(posts_path)
+      flash[:notice] = '権限がありません'
+      redirect_to(posts_path)
     end
   end
 end
