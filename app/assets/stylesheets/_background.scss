@@ -1,41 +1,92 @@
-.background {
-  background-image:image-url("map3.jpg");
+#background {
+  // background-image:image-url("spice.jpg");
+  background-color: #001935;
+  // background-color: white;
   background-size:cover;
   background-attachment: fixed;
   height:100vh;
   width: 100vw;
 }
 
-#above_content_signin {
-  position: absolute;
-  top: 10vh;
+.signin-btn, .signup-btn {
+  color: white;
+  background-color: rgba(0,0,0,.0941176) !important;
+  border: none;
+  margin-top: 10px;
+  position: relative;
+  left: 90%;
+}
+
+.signin-btn:hover, .signup-btn:hover {
+  color: #8a8a8a;
+  background-color: white !important;
+  border: none;
+  margin-top: 10px;
+  position: relative;
+  left: 90%;
+}
+
+#signup-title {
+  font-size: 2.8em;
+  letter-spacing: 0.1em;
+  line-height: 1.0;
+  color: white;
+  font-family: "American Typewriter", serif;
+}
+
+.sign-menu {
+  position: relative;
+  top: 120px;
+}
+
+.app-title {
   text-align: center;
 }
 
-#above_content_signup {
-  position: absolute;
-  top: 6vh;
+.field, .signup-field, .signin-filed {
+  padding-top: 0 !important;
+}
+
+#signup-form .form-control, #signup-form .signup-submit,
+#signin-form .form-control, #signin-form .signin-submit {
+  height: 45px;
+  padding: 11px 10px 11px 13px;
+  display: block;
+  margin: 0;
+  border: none;
+  // background: none;
+  box-sizing: border-box;
+  // color: white;
+  // text-align: center;
+}
+
+#signin-form p, #signup-form h2, #signup-form li{
+  color: white;
+}
+
+.remember-field {
+  margin-left: 10px;
+}
+
+#error_explanation {
+  background-color: #111111;
+  opacity: 0.7;
   text-align: center;
+  padding: 1px 5px;
+  border-radius: 5px;
 }
 
-.jumbotron {
-  background-color: rgba(255,255,255,0.4);
-  text-align: center;
+#error_explanation p {
+  margin: 0 auto;
+  padding: 5px;
 }
 
-.field {
-  margin-top: 20px;
+.signup-btn-field, .signin-btn-field {
+  margin-top: 10px;
 }
 
-.btn {
-  margin-top: 20px;
-}
-
-.render-signin {
-  margin-top: 20px;
-}
-
-.render-signup {
-  margin-top: 20px;
-  line-height: 2rem;
+.signup-submit, .signin-submit {
+  width: 100%;
+  background-color: #49ADE8;
+  border: none;
 }
