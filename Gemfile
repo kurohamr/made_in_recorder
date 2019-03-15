@@ -12,19 +12,16 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 
 # Front/view
-gem 'coffee-rails', '~> 4.2'
-gem 'sass-rails', '~> 5.0'
-gem 'turbolinks', '~> 5'
-gem 'uglifier', '>= 1.3.0'
-# gem 'bootstrap', '~> 4.1.1'
-# gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.4.1'
+gem 'coffee-rails', '~> 4.2'
 gem 'font-awesome-sass', '~> 5.4.1'
 gem 'jquery-rails'
+gem 'sass-rails', '~> 5.0'
 gem 'sassc-rails', '>= 2.1.0'
+gem 'turbolinks', '~> 5'
+gem 'uglifier', '>= 1.3.0'
 
 # Backend
-gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'carrierwave'
@@ -34,6 +31,7 @@ gem 'devise-i18n-views'
 gem 'enum_help'
 gem 'geocoder'
 gem 'gmaps4rails'
+gem 'jbuilder', '~> 2.5'
 gem 'mini_magick'
 
 group :development, :test do

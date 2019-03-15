@@ -19,7 +19,6 @@ class PostsController < ApplicationController
     @post.user = current_user
     @post.build_asset(image: params[:post][:asset_attributes][:image].tempfile) if params[:post][:asset_attributes][:image]
     if @post.save
-      binding.pry
       redirect_to post_path(@post.id), notice: '投稿されました'
     else
       render 'new'
@@ -63,7 +62,6 @@ class PostsController < ApplicationController
   private
 
   def set_post
-    # @post = current_user.posts.find(params[:id])
     @post = if params[:post_id]
               current_user.posts.find(params[:post_id])
             else

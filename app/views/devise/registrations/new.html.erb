@@ -1,9 +1,9 @@
-<div class="container" id="background">
+<div class="container background">
   <div class="row">
     <div class="render-signin">
         <%= link_to "ログイン", new_session_path(resource_name), class: "btn btn-default signin-btn" %>
     </div>
-    <div class="sign-menu">
+    <div class="sign-menu animated fadeIn">
       <div class="app-title">
         <h2 id="signup-title">Made in Recorder</h2>
       </div>
@@ -34,3 +34,10 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  $(function(){
+  	var num = Math.ceil(5 * Math.random());
+  	$('div.background').addClass('background' + num);
+  })
+</script>
