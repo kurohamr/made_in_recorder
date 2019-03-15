@@ -13,12 +13,11 @@ Rails.application.routes.draw do
       root 'devise/registrations#new', as: :unauthenticated_root
     end
   end
-
-  resources :users, only: %i[edit update destroy show] # ,:index]
+  
+  resources :users, only: %i[edit update destroy show]
   resources :posts do
     resources :favorites, only: %i[create destroy]
   end
-
   get '/posts/hashtag/:name', to: 'posts#hashtags'
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
