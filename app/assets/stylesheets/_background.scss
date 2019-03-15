@@ -1,11 +1,18 @@
-#background {
-  // background-image:image-url("spice.jpg");
-  background-color: #001935;
+.background {
+  background-image:image-url("pear.jpg");
+  // background-color: #001935;
   // background-color: white;
   background-size:cover;
   background-attachment: fixed;
   height:100vh;
   width: 100vw;
+}
+
+.background1 {
+  background-image:image-url("spice.jpg");
+}
+.background2 {
+  background-image:image-url("blocks.jpg");
 }
 
 .signin-btn, .signup-btn {
@@ -66,6 +73,8 @@
 
 .remember-field {
   margin-left: 10px;
+  text-stroke: .3px #000;
+  -webkit-text-stroke: .3px #000;
 }
 
 #error_explanation {
