@@ -9,11 +9,11 @@
 }
 
 .background1 {
-  background-image:image-url("spice.jpg");
+  background-image:image-url("IMG_5909.jpg");
 }
-.background2 {
-  background-image:image-url("blocks.jpg");
-}
+// .background2 {
+//   background-image:image-url("blocks.jpg");
+// }
 
 .signin-btn, .signup-btn {
   color: white;
@@ -21,7 +21,8 @@
   border: none;
   margin-top: 10px;
   position: relative;
-  left: 90%;
+  left: 92%;
+
 }
 
 .signin-btn:hover, .signup-btn:hover {
@@ -30,7 +31,7 @@
   border: none;
   margin-top: 10px;
   position: relative;
-  left: 90%;
+  left: 92%;
 }
 
 #signup-title {
@@ -48,6 +49,10 @@
 
 .app-title {
   text-align: center;
+}
+
+.app-title p {
+  color: white;
 }
 
 .field, .signup-field, .signin-filed {
