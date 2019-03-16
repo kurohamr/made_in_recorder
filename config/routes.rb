@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'about', to: 'abouts#index'
+
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
@@ -13,7 +15,7 @@ Rails.application.routes.draw do
       root 'devise/registrations#new', as: :unauthenticated_root
     end
   end
-  
+
   resources :users, only: %i[edit update destroy show]
   resources :posts do
     resources :favorites, only: %i[create destroy]
