@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'about', to: 'abouts#index'
+  # get 'about', to: 'abouts#index'
 
   devise_for :users, controllers: {
     registrations: 'users/registrations'
