@@ -53,7 +53,7 @@ class PostsController < ApplicationController
 
   def destroy
     if @post.destroy
-      redirect_to posts_path, notice: 'post deleted.'
+      redirect_to posts_path, notice: '削除されました.'
     else
       # rescue???
     end
